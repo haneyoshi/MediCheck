@@ -1,2 +1,0 @@
-# MediCheck
-Clinic post system
