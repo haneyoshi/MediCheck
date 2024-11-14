@@ -8,4 +8,8 @@ db=mysql.connector.connect(
   database="MediDataBase"
 )
 
-# myCursor=db.cursor()
+myCursor=db.cursor()
+
+def cursirExecution(action):
+  myCursor.execute(action)
+  
