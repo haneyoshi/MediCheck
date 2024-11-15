@@ -10,6 +10,6 @@ db=mysql.connector.connect(
 
 myCursor=db.cursor()
 
-def cursirExecution(action):
+def cursorExecution(action):
   myCursor.execute(action)
   
