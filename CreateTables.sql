@@ -14,8 +14,8 @@ create Table Visit(
 );
 
 Create Table Symptom(
-  sympton_id INT AUTO_INCREMENT PRIMARY KEY,
-  sympton_name VARCHAR(50) NOT NULL,
+  symptom_id INT AUTO_INCREMENT PRIMARY KEY,
+  symptom_name VARCHAR(50) NOT NULL,
   UNIQUE (symptom_name)
 );
 
@@ -23,9 +23,9 @@ Create Table Symptom(
 Create Table VisitSymptom(
   visit_symptom_id INT AUTO_INCREMENT PRIMARY KEY,
   visit_id INT,
-  sympton_id INT,
+  symptom_id INT,
   FOREIGN KEY (visit_id) REFERENCES Visit(visit_id),
-  FOREIGN KEY (sympton_id) REFERENCES Symptom(sympton_id)
+  FOREIGN KEY (symptom_id) REFERENCES Symptom(symptom_id)
 );
 
 create table Prescription(
@@ -49,7 +49,7 @@ Create Table Disease(
 );
 
 --Junction table
-Create Table PrescriptionMedicines (
+Create Table PrescribedMedicine (
   prescription_id INT,
   medicine_id INT,
   FOREIGN KEY (prescription_id) REFERENCES Prescription(prescription_id),

@@ -38,4 +38,12 @@ def insert_prescription(visit_id,disease_name):
   prescriptionFormula = "INSERT INTO Prescription(visit_id,disease_id) VALUES(%s,%s)"
   return cursorInsertion(prescriptionFormula,visit_id,disease_id)
 
-def insert_visit
+def insert_visitSymptom(visit_id,symptom_name):
+  symptom_id = insert_symptom(symptom_name)
+  visitSymptomFormula = "INSERT INTO VistiSymptom(visit_id,symptom_name) VALUES(%s,%s)"
+  return cursorInsertion(visitSymptomFormula, visit_id, symptom_id)
+
+def insert_prescribedMedicine(prescription_id,medicine_name):
+  medicine_id = insert_medicine(medicine_name)
+  prescribedMedicineFormula = "INSERT INTO PrescribedMedicine(precription_id,medicine_id) VALUES (%s,%s)"
+  return cursorInsertion(prescribedMedicineFormula,prescription_id,medicine_id)

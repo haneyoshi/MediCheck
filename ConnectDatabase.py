@@ -9,5 +9,27 @@ connection_pool = pooling.MySQLConnectionPool(
   host="localhost",
   user="root",
   password="mySQL20!",
-  database="MediDataBase"
+  database="MediDatabase"
+  # auth_plugin='mysql_native_password'
 )
+
+def connect_pool(instruction):
+  try:
+    connect = connection_pool.get_connection()
+    myCursor = connect.cursor()
+    return myCursor.execute(instruction)
+  finally:
+    myCursor.close()
+    connect.close()
+
+def get_databases():
+  instruction = "SHOW DATABASE"
+  output(connect_pool(instruction))
+
+def get_tables():
+  instruction = "SHOW TABLES"
+  output(connect_pool(instruction))
+
+def output(out_put_content):
+  for content in out_put_content:
+    print(content)
