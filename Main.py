@@ -1,2 +1,2 @@
-from ConnectDatabase import get_databases
-get_databases()
+from ConnectDatabase import get_tables
+get_tables()

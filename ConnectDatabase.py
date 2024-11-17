@@ -17,14 +17,14 @@ def connect_pool(instruction):
   try:
     connect = connection_pool.get_connection()
     myCursor = connect.cursor()
-    return myCursor.execute(instruction)
+    print("execute show tables")
+    myCursor.execute(instruction)
+    tables = myCursor.fetchall()
+    return tables
   finally:
     myCursor.close()
     connect.close()
 
-def get_databases():
-  instruction = "SHOW DATABASE"
-  output(connect_pool(instruction))
 
 def get_tables():
   instruction = "SHOW TABLES"
