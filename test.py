@@ -1,17 +1,33 @@
-import mysql.connector
-connection = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="mySQL20!",
-  # database="MediDatabase"
-)
+class N:
+    def __init__(self,ranNum):
+        self.n = ranNum
+    def __eq__(self, other):
+        if not isinstance(other,N):
+            return NotImplemented
+        return self.n == other.n
+    
+    def __repr__(self):
+        return f"N({self.n})"
+      
+    
+class T:
+    def __init__(self,ranSrin):
+        self.s = ranSrin
+        
+    
+n1 = N(1)
+n2 = N(2)
+n3 = N(3)
+n4 = N(4)
+n5 = N(5)
+n_3 = N(3)
 
-myCursor = connection.cursor()
-myCursor.execute("CREATE DATABASE MediDatabase")
+nlist = [n1,n2,n3,n4,n5]
+if n_3 in nlist:
+    print("found")
+    nlist.remove(n3)
+    for n in nlist:
+        print(repr(n))
 
-
-# mysql -u root -p
-# mysql_native_password.so
-# plugin_dir    | /usr/local/mysql/lib/plugin/ 
-
-# sudo brew services start mysql
+else:
+    print("not found")
