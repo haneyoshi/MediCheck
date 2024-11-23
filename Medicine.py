@@ -11,5 +11,5 @@ class Medicine:
             return NotImplemented
         return self.name == other.name
 
-    def _repr_(self):
+    def __repr__(self):
         return f"Medicine(medicine_id={self.id},medicine_name={self.name})"

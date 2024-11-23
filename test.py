@@ -1,8 +1,9 @@
-from DeletionFormula import delete_patient
-from InsertionFormula import insert_patient
+from ReadFormula import fetch_all_patients
+from Patient import Patient
 
 
-delete_patient("z567890123")
-
-patient = ("z567890123","Grime","Loryex","1963-04-11")
-insert_patient(patient)
+all_patients  = fetch_all_patients()
+# print(all_patients)
+# next(all_patients)
+patient_list = [Patient(**patient) for patient in all_patients]
+print(repr(patient_list))

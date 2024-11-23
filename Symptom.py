@@ -11,5 +11,5 @@ class Symptom:
             return NotImplemented
         return self.name == other.name
     
-    def _repr_(self):
+    def __repr__(self):
         return f"Symptom(symptom_id={self.id},symptom_name={self.name})"
