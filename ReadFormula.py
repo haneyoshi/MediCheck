@@ -10,7 +10,7 @@ def fetch_all_patients():
     query = "SELECT * FROM Patient"
     return cursorRead(query)
 
-# Fetch visits for a specific patient
+# Fetch visits for a specific patient !MAY NOT NEEDED
 def fetch_visits_by_patient_id(patient_id):
     query = "SELECT * FROM Visit WHERE patient_id = %s"
     return cursorRead(query, (patient_id,))
