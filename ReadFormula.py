@@ -12,7 +12,7 @@ def fetch_all_patients():
 
 # Fetch visits for a specific patient !MAY NOT NEEDED
 def fetch_visits_by_patient_id(patient_id):
-    query = "SELECT * FROM Visit WHERE patient_id = %s"
+    query = "SELECT Visit.visit_id, Visit.visit_date FROM Visit WHERE patient_id = %s"
     return cursorRead(query, (patient_id,))
 
 # Fetch a specific visit
@@ -28,7 +28,7 @@ def fetch_all_symptoms():
 # Fetch symptoms for a specific visit
 def fetch_symptoms_by_visit_id(visit_id):
     query = """
-        SELECT Symptom.symptom_name
+        SELECT Symptom.symptom_id, Symptom.symptom_name
         FROM VisitSymptom
         INNER JOIN Symptom ON VisitSymptom.symptom_id = Symptom.symptom_id
         WHERE VisitSymptom.visit_id = %s
@@ -47,13 +47,22 @@ def fetch_all_diseases():
 
 # Fetch prescriptions for a specific visit
 def fetch_prescriptions_by_visit_id(visit_id):
-    query = "SELECT * FROM Prescription WHERE visit_id = %s"
+    query = "SELECT prescription_id FROM Prescription WHERE visit_id = %s"
     return cursorRead(query, (visit_id,))
+
+# fetch diagnosed disease fpr a specifi presciption
+def fetch_disease_by_prescription_id(prescription_id):
+    query = """SELECT Disease.disease_id, Disease.disease_name
+        FROM Prescription
+        INNER JOIN Disease ON Prescription.disease_id = Disease.disease_id
+        WHERE Prescription.prescription_id = %s
+        """
+    return cursorRead(query,prescription_id)
 
 # Fetch medicines for a specific prescription
 def fetch_medicines_by_prescription_id(prescription_id):
     query = """
-        SELECT Medicine.medicine_name
+        SELECT Medicine.medicine_id, Medicine.medicine.name
         FROM PrescribedMedicine
         INNER JOIN Medicine ON PrescribedMedicine.medicine_id = Medicine.medicine_id
         WHERE PrescribedMedicine.prescription_id = %s

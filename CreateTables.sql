@@ -44,8 +44,8 @@ Create Table Medicine(
 
 Create Table Disease(
   disease_id INT AUTO_INCREMENT PRIMARY KEY,
-  diease_name VARCHAR(50) NOT NULL,
-  UNIQUE (diease_name)
+  disease_name VARCHAR(50) NOT NULL,
+  UNIQUE (disease_name)
 );
 
 --Junction table

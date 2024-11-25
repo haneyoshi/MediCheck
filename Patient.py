@@ -5,7 +5,7 @@ class Patient:
         self.fName = first_name
         self.lName = last_name
         self.dBirth = date_of_birth
-        self.records = history
+        self.records = history or []
     
         # object comparison
     def __eq__(self, other):
