@@ -6,6 +6,11 @@ import Symptom
 import ReadFormula
 
 def get_patient_profile(patient_id):
+    # patient = (patient_id, first_name, last_name, date_of_birth)
+    patient_data = ReadFormula.fetch_patient_by_id(patient_id)
+    if not patient_data:
+        raise ValueError(f"No patient found with given id:{patient_id}")
+    
     # visit = (visit_id, visit_date)
     visit_data = ReadFormula.fetch_visits_by_patient_id(patient_id)
     visits= []
@@ -27,8 +32,7 @@ def get_patient_profile(patient_id):
         visit.reported_symptoms = symptoms
         visits.append(visit)
 
-    # patient = (patient_id, first_name, last_name, date_of_birth)
-    patient_data = ReadFormula.fetch_patient_by_id(patient_id)
+    
     patient = Patient(id=patient_data[0],fName=patient_data[1],lName=patient_data[2],dBirth=patient_data[3],history=visits)
 
     return patient

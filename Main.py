@@ -1,21 +1,17 @@
-# from ConnectDatabase import get_tables
-# get_tables()
+import UserInteract
+def main():
+    while True:
+        user_input = input("Enter patient ID or type 'new' to create a new patient: ").strip()
+        
+        if user_input.lower() == 'new':
+            new_patient = UserInteract.create_new_patient()  # Implement your create_new_patient function
+            print(f"New patient created: {new_patient}")
+            break
 
-import csv
-from InsertionFormula import insert_patient
-
-with open('RandomPatients.csv','r') as file:
-            # (file name,read)
-    file_reader = csv.reader(file)
-    next(file_reader)
-    # skip first line, it is field name
-
-    for line in file_reader:
-        # print(line)
-        id = line[0]
-        fName = line[1]
-        lName = line [2]
-        dBirth = line[3]
-        patient = (id,fName,lName,dBirth)
-        # print(id+","+fName+","+lName+","+dBirth)
-        insert_patient(patient)
+        try:
+            patient = get_patient_profile(user_input)
+            print(f"Patient retrieved: {patient}")
+            break
+        except ValueError as e:
+            print(e)
+            print("Please try again or type 'new' to create a new patient.")
