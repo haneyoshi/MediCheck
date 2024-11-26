@@ -1,0 +1,301 @@
+patientID,visit_date,symptoms,diagnosed_disease,prescribed_medicines
+g678901234,2024-02-26 22:45:31,"mucus production, persistent cough",Bronchitis,"Azithromycin, Bronchodilator"
+u012345678,2024-11-18 22:45:31,"skin redness, warmth, pain, swelling",Cellulitis,"Cephalexin, Ibuprofen"
+e345678901,2024-07-03 22:45:31,"wheezing, shortness of breath, chest tightness",Asthma,Inhaled Steroid
+t901234567,2024-09-30 22:45:31,"diarrhea, vomiting",Gastroenteritis,"Loperamide, Oral Rehydration"
+w234567890,2024-09-06 22:45:31,"swelling, skin redness, pain, warmth",Cellulitis,Cephalexin
+d901234567,2024-09-28 22:45:31,"redness, itchy skin, rash",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+d901234567,2024-01-05 22:45:31,"nausea, stomach pain, diarrhea, vomiting",Gastroenteritis,"Oral Rehydration, Loperamide"
+h345678901,2024-05-03 22:45:31,"stomach pain, nausea",Gastroenteritis,"Oral Rehydration, Loperamide"
+h345678901,2024-09-04 22:45:31,"chest tightness, shortness of breath, wheezing",Asthma,"Salbutamol, Inhaled Steroid"
+a123456789,2023-12-21 22:45:31,"swelling, warmth, pain",Cellulitis,Cephalexin
+f123456789,2024-08-12 22:45:31,"swelling, skin redness",Cellulitis,"Cephalexin, Ibuprofen"
+g234567890,2024-08-30 22:45:31,"warmth, skin redness, swelling, pain",Cellulitis,Ibuprofen
+k678901234,2024-07-31 22:45:31,"reduced hearing, fever, ear drainage, ear pain",Ear Infection,Amoxicillin
+r789012345,2024-02-20 22:45:31,"swollen tonsils, sore throat",Pharyngitis,Penicillin
+g234567890,2024-10-11 22:45:31,"sore throat, swollen tonsils",Pharyngitis,"Ibuprofen, Penicillin"
+r345678901,2024-10-21 22:45:31,"rash, itchy skin, redness",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+q678901234,2023-12-10 22:45:31,"fever, sore throat, headache",Common Cold,"Paracetamol, Cough Syrup, Ibuprofen"
+b789012345,2024-10-15 22:45:31,"rash, itchy skin",Dermatitis,Moisturizer
+z567890123,2024-09-21 22:45:31,"headache, sore throat, cough, fever, nasal congestion",Common Cold,Ibuprofen
+j567890123,2024-05-29 22:45:31,"sinus pressure, nasal congestion, facial pain",Sinusitis,"Amoxicillin, Decongestant"
+h789012345,2023-12-13 22:45:31,"sore throat, difficulty swallowing, swollen tonsils",Pharyngitis,Penicillin
+e012345678,2024-02-04 22:45:31,"vomiting, stomach pain, diarrhea",Gastroenteritis,Oral Rehydration
+i456789012,2024-07-11 22:45:31,"reduced hearing, ear drainage",Ear Infection,Ibuprofen
+p123456789,2024-05-03 22:45:31,"cough, headache, sore throat, fever, nasal congestion",Common Cold,"Paracetamol, Ibuprofen"
+u678901234,2024-07-21 22:45:31,"itchy eyes, nasal congestion, sneezing",Seasonal Allergies,"Antihistamine, Cetirizine, Loratadine"
+c890123456,2024-10-29 22:45:31,"mucus production, persistent cough, shortness of breath",Bronchitis,"Bronchodilator, Cough Syrup, Azithromycin"
+a123456789,2024-05-29 22:45:31,"shortness of breath, wheezing, chest tightness",Asthma,Inhaled Steroid
+j901234567,2024-03-14 22:45:31,"sinus pressure, nasal congestion, facial pain",Sinusitis,"Amoxicillin, Nasal Spray, Decongestant"
+x345678901,2024-09-13 22:45:31,"nasal congestion, facial pain",Sinusitis,"Amoxicillin, Decongestant"
+t567890123,2024-10-23 22:45:31,"redness, itchy skin, rash",Dermatitis,"Moisturizer, Hydrocortisone Cream"
+v123456789,2024-08-09 22:45:31,"reduced hearing, ear pain, ear drainage",Ear Infection,Ibuprofen
+u678901234,2024-07-06 22:45:31,"swelling, skin redness, warmth, pain",Cellulitis,"Cephalexin, Ibuprofen"
+e012345678,2024-04-01 22:45:31,"warmth, swelling, pain",Cellulitis,Cephalexin
+m234567890,2024-01-11 22:45:31,"wheezing, shortness of breath",Asthma,"Salbutamol, Inhaled Steroid"
+l123456789,2024-06-22 22:45:31,"itchy skin, rash, redness",Dermatitis,Hydrocortisone Cream
+b987654321,2024-04-06 22:45:31,"nausea, stomach pain, diarrhea, vomiting",Gastroenteritis,"Oral Rehydration, Loperamide"
+b987654321,2024-10-21 22:45:31,"itchy eyes, sneezing, nasal congestion",Seasonal Allergies,"Cetirizine, Loratadine, Antihistamine"
+f567890123,2023-12-22 22:45:31,"sore throat, headache",Common Cold,"Cough Syrup, Paracetamol, Ibuprofen"
+u678901234,2024-01-27 22:45:31,"swollen tonsils, difficulty swallowing",Pharyngitis,Ibuprofen
+e012345678,2024-04-29 22:45:31,"reduced hearing, ear drainage",Ear Infection,"Amoxicillin, Ibuprofen"
+x901234567,2024-09-18 22:45:31,"muscle spasms, lower back pain",Back Pain,Ibuprofen
+g234567890,2024-08-10 22:45:31,"facial pain, nasal congestion, sinus pressure",Sinusitis,Nasal Spray
+m890123456,2024-02-01 22:45:31,"facial pain, sinus pressure",Sinusitis,Nasal Spray
+l123456789,2024-05-10 22:45:31,"rash, itchy skin",Dermatitis,Hydrocortisone Cream
+o456789012,2024-03-02 22:45:31,"nasal congestion, itchy eyes, sneezing",Seasonal Allergies,"Cetirizine, Loratadine, Antihistamine"
+j567890123,2024-10-16 22:45:31,"diarrhea, vomiting, stomach pain",Gastroenteritis,"Oral Rehydration, Loperamide"
+b789012345,2024-09-29 22:45:31,"difficulty swallowing, sore throat, swollen tonsils",Pharyngitis,Penicillin
+v123456789,2024-08-05 22:45:31,"skin redness, warmth, swelling, pain",Cellulitis,Cephalexin
+y456789012,2024-11-15 22:45:31,"persistent cough, shortness of breath",Bronchitis,"Bronchodilator, Cough Syrup, Azithromycin"
+u678901234,2024-07-22 22:45:31,"difficulty swallowing, swollen tonsils",Pharyngitis,Penicillin
+m234567890,2024-09-16 22:45:31,"headache, nasal congestion, cough, sore throat, fever",Common Cold,"Ibuprofen, Cough Syrup, Paracetamol"
+k012345678,2024-11-17 22:45:31,"sore throat, difficulty swallowing, swollen tonsils",Pharyngitis,Penicillin
+k678901234,2024-03-23 22:45:31,"persistent cough, shortness of breath",Bronchitis,Cough Syrup
+o012345678,2024-03-21 22:45:31,"swollen tonsils, sore throat, difficulty swallowing",Pharyngitis,Penicillin
+u012345678,2024-07-15 22:45:31,"shortness of breath, wheezing",Asthma,Salbutamol
+k678901234,2024-06-09 22:45:31,"nausea, stomach pain",Gastroenteritis,"Loperamide, Oral Rehydration"
+d234567890,2024-10-11 22:45:31,"swelling, pain",Cellulitis,"Ibuprofen, Cephalexin"
+h345678901,2024-08-18 22:45:31,"wheezing, shortness of breath, chest tightness",Asthma,Inhaled Steroid
+g234567890,2024-01-29 22:45:31,"lower back pain, muscle spasms, stiffness",Back Pain,Acetaminophen
+c456789012,2024-10-26 22:45:31,"rash, itchy skin",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+e012345678,2023-12-15 22:45:31,"diarrhea, nausea",Gastroenteritis,Loperamide
+w234567890,2024-08-04 22:45:31,"nausea, diarrhea, vomiting, stomach pain",Gastroenteritis,Loperamide
+w890123456,2024-08-05 22:45:31,"persistent cough, mucus production",Bronchitis,Cough Syrup
+f123456789,2024-08-16 22:45:31,"nasal congestion, facial pain, sinus pressure",Sinusitis,"Nasal Spray, Decongestant"
+e012345678,2024-10-11 22:45:31,"facial pain, sinus pressure, nasal congestion",Sinusitis,"Amoxicillin, Nasal Spray, Decongestant"
+q678901234,2024-08-06 22:45:31,"ear pain, ear drainage",Ear Infection,Ibuprofen
+h789012345,2024-07-13 22:45:31,"diarrhea, nausea",Gastroenteritis,Oral Rehydration
+r345678901,2024-01-08 22:45:31,"muscle spasms, lower back pain, stiffness",Back Pain,Ibuprofen
+v789012345,2024-10-23 22:45:31,"nasal congestion, itchy eyes",Seasonal Allergies,"Cetirizine, Loratadine"
+e345678901,2024-11-12 22:45:31,"sinus pressure, nasal congestion, facial pain",Sinusitis,Amoxicillin
+m234567890,2024-07-18 22:45:31,"facial pain, nasal congestion, sinus pressure",Sinusitis,"Nasal Spray, Decongestant, Amoxicillin"
+t901234567,2023-12-28 22:45:31,"muscle spasms, lower back pain, stiffness",Back Pain,Muscle Relaxant
+m890123456,2024-11-14 22:45:31,"vomiting, nausea, stomach pain, diarrhea",Gastroenteritis,"Oral Rehydration, Loperamide"
+u678901234,2023-12-30 22:45:31,"sneezing, nasal congestion",Seasonal Allergies,Antihistamine
+h789012345,2024-03-18 22:45:31,"wheezing, chest tightness",Asthma,Salbutamol
+u012345678,2024-11-06 22:45:31,"swollen tonsils, sore throat",Pharyngitis,Penicillin
+h345678901,2024-05-04 22:45:31,"redness, rash, itchy skin",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+b789012345,2024-06-10 22:45:31,"sore throat, nasal congestion, cough",Common Cold,"Paracetamol, Ibuprofen"
+h789012345,2024-11-22 22:45:31,"sinus pressure, nasal congestion",Sinusitis,"Decongestant, Amoxicillin"
+v789012345,2024-06-18 22:45:31,"wheezing, chest tightness",Asthma,Inhaled Steroid
+t901234567,2024-09-03 22:45:31,"nasal congestion, itchy eyes, sneezing",Seasonal Allergies,"Loratadine, Antihistamine"
+s456789012,2024-01-06 22:45:31,"stomach pain, vomiting, diarrhea, nausea",Gastroenteritis,"Loperamide, Oral Rehydration"
+o012345678,2024-07-20 22:45:31,"warmth, skin redness, swelling",Cellulitis,Ibuprofen
+l789012345,2023-12-02 22:45:31,"muscle spasms, stiffness",Back Pain,Ibuprofen
+v123456789,2024-09-21 22:45:31,"wheezing, shortness of breath, chest tightness",Asthma,"Inhaled Steroid, Salbutamol"
+g678901234,2024-07-27 22:45:31,"difficulty swallowing, sore throat",Pharyngitis,Ibuprofen
+w890123456,2024-07-11 22:45:31,"facial pain, sinus pressure, nasal congestion",Sinusitis,"Amoxicillin, Decongestant"
+v123456789,2024-11-11 22:45:31,"ear pain, fever, ear drainage",Ear Infection,"Ibuprofen, Amoxicillin"
+j901234567,2024-07-26 22:45:31,"difficulty swallowing, sore throat",Pharyngitis,"Ibuprofen, Penicillin"
+k012345678,2024-04-30 22:45:31,"ear pain, ear drainage",Ear Infection,"Ibuprofen, Amoxicillin"
+x901234567,2024-01-18 22:45:31,"ear drainage, ear pain, fever, reduced hearing",Ear Infection,Amoxicillin
+j567890123,2024-08-13 22:45:31,"ear pain, fever, reduced hearing, ear drainage",Ear Infection,Ibuprofen
+i890123456,2023-12-08 22:45:31,"reduced hearing, ear pain, ear drainage",Ear Infection,"Ibuprofen, Amoxicillin"
+p567890123,2024-04-26 22:45:31,"nasal congestion, sinus pressure",Sinusitis,"Decongestant, Nasal Spray"
+w890123456,2024-02-22 22:45:31,"stomach pain, nausea",Gastroenteritis,"Oral Rehydration, Loperamide"
+f567890123,2024-02-07 22:45:31,"difficulty swallowing, sore throat",Pharyngitis,"Penicillin, Ibuprofen"
+z567890123,2024-08-08 22:45:31,"nasal congestion, sinus pressure",Sinusitis,Decongestant
+k678901234,2024-09-23 22:45:31,"facial pain, nasal congestion",Sinusitis,"Amoxicillin, Nasal Spray, Decongestant"
+b789012345,2024-08-06 22:45:31,"itchy eyes, nasal congestion, sneezing",Seasonal Allergies,"Cetirizine, Loratadine"
+w890123456,2024-05-02 22:45:31,"fever, ear pain",Ear Infection,"Ibuprofen, Amoxicillin"
+s890123456,2024-03-26 22:45:31,"itchy eyes, sneezing, nasal congestion",Seasonal Allergies,"Cetirizine, Loratadine, Antihistamine"
+m234567890,2024-07-08 22:45:31,"nasal congestion, sinus pressure, facial pain",Sinusitis,"Nasal Spray, Amoxicillin"
+u678901234,2024-06-10 22:45:31,"ear drainage, ear pain, fever, reduced hearing",Ear Infection,Amoxicillin
+w234567890,2024-06-18 22:45:31,"mucus production, shortness of breath, persistent cough",Bronchitis,"Bronchodilator, Azithromycin"
+u012345678,2024-07-01 22:45:31,"reduced hearing, fever, ear pain, ear drainage",Ear Infection,"Ibuprofen, Amoxicillin"
+e012345678,2023-11-27 22:45:31,"swollen tonsils, difficulty swallowing, sore throat",Pharyngitis,"Ibuprofen, Penicillin"
+c890123456,2024-05-22 22:45:31,"fever, ear pain",Ear Infection,Amoxicillin
+p567890123,2024-05-09 22:45:31,"sneezing, itchy eyes, nasal congestion",Seasonal Allergies,Antihistamine
+f123456789,2024-10-27 22:45:31,"chest tightness, shortness of breath, wheezing",Asthma,Inhaled Steroid
+o456789012,2024-07-28 22:45:31,"nasal congestion, fever, cough, headache, sore throat",Common Cold,"Paracetamol, Ibuprofen"
+r345678901,2024-07-31 22:45:31,"diarrhea, nausea, vomiting",Gastroenteritis,"Oral Rehydration, Loperamide"
+n901234567,2024-02-09 22:45:31,"sinus pressure, nasal congestion, facial pain",Sinusitis,"Amoxicillin, Decongestant"
+o012345678,2024-05-25 22:45:31,"shortness of breath, mucus production, persistent cough",Bronchitis,"Cough Syrup, Bronchodilator"
+c890123456,2024-08-16 22:45:31,"lower back pain, stiffness",Back Pain,Ibuprofen
+b789012345,2024-01-10 22:45:31,"persistent cough, mucus production",Bronchitis,"Cough Syrup, Bronchodilator, Azithromycin"
+w890123456,2024-02-18 22:45:31,"shortness of breath, chest tightness, wheezing",Asthma,Inhaled Steroid
+i456789012,2024-03-19 22:45:31,"diarrhea, vomiting, stomach pain",Gastroenteritis,Loperamide
+e012345678,2024-10-13 22:45:31,"facial pain, sinus pressure, nasal congestion",Sinusitis,"Nasal Spray, Decongestant, Amoxicillin"
+h345678901,2024-04-15 22:45:31,"stiffness, lower back pain, muscle spasms",Back Pain,"Ibuprofen, Muscle Relaxant"
+f567890123,2024-09-05 22:45:31,"facial pain, sinus pressure, nasal congestion",Sinusitis,"Amoxicillin, Decongestant, Nasal Spray"
+q234567890,2024-11-10 22:45:31,"nasal congestion, sneezing, itchy eyes",Seasonal Allergies,"Antihistamine, Cetirizine"
+e345678901,2024-06-30 22:45:31,"stiffness, lower back pain",Back Pain,"Muscle Relaxant, Acetaminophen, Ibuprofen"
+j567890123,2024-09-10 22:45:31,"headache, nasal congestion, cough, sore throat",Common Cold,"Cough Syrup, Paracetamol, Ibuprofen"
+u678901234,2024-05-16 22:45:31,"fever, ear drainage, reduced hearing, ear pain",Ear Infection,Amoxicillin
+x345678901,2024-03-27 22:45:31,"nasal congestion, sinus pressure",Sinusitis,"Nasal Spray, Decongestant, Amoxicillin"
+g234567890,2024-01-07 22:45:31,"itchy skin, redness",Dermatitis,Moisturizer
+m890123456,2024-01-17 22:45:31,"pain, swelling, skin redness",Cellulitis,"Cephalexin, Ibuprofen"
+n901234567,2024-07-01 22:45:31,"ear pain, fever, ear drainage",Ear Infection,Amoxicillin
+f123456789,2023-12-15 22:45:31,"sore throat, swollen tonsils",Pharyngitis,"Ibuprofen, Penicillin"
+g678901234,2024-07-11 22:45:31,"itchy eyes, nasal congestion, sneezing",Seasonal Allergies,"Cetirizine, Antihistamine"
+c890123456,2024-11-24 22:45:31,"chest tightness, wheezing",Asthma,Inhaled Steroid
+r789012345,2024-04-04 22:45:31,"reduced hearing, ear pain, ear drainage, fever",Ear Infection,Amoxicillin
+q678901234,2023-11-27 22:45:31,"warmth, pain",Cellulitis,"Ibuprofen, Cephalexin"
+p567890123,2023-12-24 22:45:31,"warmth, skin redness, pain, swelling",Cellulitis,"Cephalexin, Ibuprofen"
+p567890123,2024-02-06 22:45:31,"mucus production, shortness of breath, persistent cough",Bronchitis,"Cough Syrup, Bronchodilator"
+i890123456,2024-01-17 22:45:31,"swollen tonsils, difficulty swallowing, sore throat",Pharyngitis,Ibuprofen
+y456789012,2024-04-17 22:45:31,"itchy skin, rash, redness",Dermatitis,"Moisturizer, Hydrocortisone Cream"
+b987654321,2024-10-31 22:45:31,"ear pain, ear drainage, reduced hearing",Ear Infection,Ibuprofen
+y456789012,2024-10-11 22:45:31,"cough, headache, nasal congestion, fever",Common Cold,"Ibuprofen, Paracetamol, Cough Syrup"
+a678901234,2023-12-10 22:45:31,"warmth, skin redness",Cellulitis,"Ibuprofen, Cephalexin"
+x901234567,2024-02-12 22:45:31,"fever, ear pain",Ear Infection,"Ibuprofen, Amoxicillin"
+n345678901,2024-06-09 22:45:31,"lower back pain, stiffness, muscle spasms",Back Pain,Acetaminophen
+r345678901,2024-10-27 22:45:31,"muscle spasms, lower back pain",Back Pain,"Muscle Relaxant, Acetaminophen, Ibuprofen"
+d901234567,2024-09-04 22:45:31,"skin redness, pain, swelling",Cellulitis,Ibuprofen
+m234567890,2024-10-05 22:45:31,"nasal congestion, itchy eyes, sneezing",Seasonal Allergies,"Antihistamine, Loratadine, Cetirizine"
+o012345678,2024-03-09 22:45:31,"itchy eyes, nasal congestion, sneezing",Seasonal Allergies,Antihistamine
+t567890123,2024-04-30 22:45:31,"rash, redness",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+x901234567,2024-09-30 22:45:31,"itchy eyes, sneezing, nasal congestion",Seasonal Allergies,"Cetirizine, Loratadine"
+f567890123,2024-11-01 22:45:31,"fever, cough, headache",Common Cold,Cough Syrup
+p123456789,2024-02-17 22:45:31,"muscle spasms, lower back pain",Back Pain,Acetaminophen
+h789012345,2024-08-04 22:45:31,"nasal congestion, facial pain",Sinusitis,"Nasal Spray, Amoxicillin, Decongestant"
+q678901234,2024-04-02 22:45:31,"wheezing, chest tightness",Asthma,"Inhaled Steroid, Salbutamol"
+i890123456,2024-03-06 22:45:31,"swelling, warmth",Cellulitis,Cephalexin
+d901234567,2024-11-04 22:45:31,"persistent cough, mucus production",Bronchitis,Cough Syrup
+v789012345,2024-07-08 22:45:31,"chest tightness, wheezing",Asthma,Salbutamol
+c890123456,2023-12-14 22:45:31,"rash, redness, itchy skin",Dermatitis,Hydrocortisone Cream
+t567890123,2024-04-09 22:45:31,"rash, itchy skin",Dermatitis,Moisturizer
+m234567890,2024-04-07 22:45:31,"facial pain, sinus pressure",Sinusitis,"Decongestant, Amoxicillin"
+s456789012,2024-01-19 22:45:31,"itchy skin, redness, rash",Dermatitis,Hydrocortisone Cream
+m890123456,2024-06-14 22:45:31,"muscle spasms, stiffness, lower back pain",Back Pain,"Acetaminophen, Muscle Relaxant"
+p123456789,2024-06-02 22:45:31,"nasal congestion, itchy eyes, sneezing",Seasonal Allergies,"Loratadine, Cetirizine"
+w234567890,2024-05-10 22:45:31,"stiffness, muscle spasms, lower back pain",Back Pain,"Ibuprofen, Acetaminophen"
+l123456789,2024-06-12 22:45:31,"fever, cough",Common Cold,"Cough Syrup, Ibuprofen, Paracetamol"
+x901234567,2024-08-06 22:45:31,"facial pain, nasal congestion",Sinusitis,"Decongestant, Nasal Spray, Amoxicillin"
+j901234567,2024-09-14 22:45:31,"nasal congestion, sinus pressure, facial pain",Sinusitis,Nasal Spray
+x901234567,2024-09-22 22:45:31,"sore throat, headache, fever, nasal congestion, cough",Common Cold,"Cough Syrup, Ibuprofen, Paracetamol"
+s456789012,2024-10-11 22:45:31,"redness, itchy skin, rash",Dermatitis,Hydrocortisone Cream
+k678901234,2024-11-10 22:45:31,"nasal congestion, facial pain, sinus pressure",Sinusitis,Decongestant
+g234567890,2024-08-25 22:45:31,"sore throat, difficulty swallowing",Pharyngitis,"Penicillin, Ibuprofen"
+u678901234,2024-02-20 22:45:31,"shortness of breath, persistent cough",Bronchitis,"Bronchodilator, Cough Syrup, Azithromycin"
+u012345678,2023-12-20 22:45:31,"wheezing, chest tightness",Asthma,Inhaled Steroid
+q234567890,2024-02-24 22:45:31,"nasal congestion, sneezing, itchy eyes",Seasonal Allergies,"Loratadine, Antihistamine, Cetirizine"
+b987654321,2024-08-31 22:45:31,"sore throat, swollen tonsils, difficulty swallowing",Pharyngitis,"Penicillin, Ibuprofen"
+w890123456,2024-01-27 22:45:31,"chest tightness, wheezing, shortness of breath",Asthma,"Inhaled Steroid, Salbutamol"
+n345678901,2024-02-08 22:45:31,"skin redness, warmth, swelling",Cellulitis,Ibuprofen
+h345678901,2024-05-11 22:45:31,"redness, rash, itchy skin",Dermatitis,Moisturizer
+o456789012,2024-10-18 22:45:31,"difficulty swallowing, sore throat, swollen tonsils",Pharyngitis,Ibuprofen
+y456789012,2024-05-24 22:45:31,"chest tightness, shortness of breath",Asthma,Salbutamol
+e345678901,2024-05-02 22:45:31,"shortness of breath, mucus production",Bronchitis,"Bronchodilator, Cough Syrup"
+b987654321,2024-05-20 22:45:31,"sore throat, headache",Common Cold,"Cough Syrup, Ibuprofen"
+k678901234,2024-10-15 22:45:31,"pain, warmth, skin redness, swelling",Cellulitis,"Cephalexin, Ibuprofen"
+u678901234,2024-07-20 22:45:31,"rash, redness, itchy skin",Dermatitis,Moisturizer
+r345678901,2024-09-06 22:45:31,"lower back pain, stiffness",Back Pain,"Muscle Relaxant, Ibuprofen, Acetaminophen"
+j901234567,2024-01-30 22:45:31,"rash, redness",Dermatitis,Moisturizer
+x345678901,2024-03-26 22:45:31,"fever, cough",Common Cold,"Cough Syrup, Ibuprofen"
+d901234567,2024-04-08 22:45:31,"stiffness, lower back pain",Back Pain,"Acetaminophen, Muscle Relaxant, Ibuprofen"
+f123456789,2024-09-16 22:45:31,"swollen tonsils, difficulty swallowing",Pharyngitis,"Penicillin, Ibuprofen"
+q234567890,2024-09-23 22:45:31,"swollen tonsils, difficulty swallowing, sore throat",Pharyngitis,"Penicillin, Ibuprofen"
+v789012345,2024-09-21 22:45:31,"nasal congestion, sneezing, itchy eyes",Seasonal Allergies,Antihistamine
+k678901234,2024-04-13 22:45:31,"nasal congestion, sinus pressure",Sinusitis,"Nasal Spray, Decongestant"
+h789012345,2024-01-07 22:45:31,"skin redness, pain, warmth",Cellulitis,"Ibuprofen, Cephalexin"
+u678901234,2024-06-21 22:45:31,"nausea, stomach pain, vomiting, diarrhea",Gastroenteritis,Oral Rehydration
+r345678901,2024-04-30 22:45:31,"ear pain, reduced hearing",Ear Infection,"Ibuprofen, Amoxicillin"
+c890123456,2024-01-08 22:45:31,"stiffness, muscle spasms, lower back pain",Back Pain,"Ibuprofen, Acetaminophen, Muscle Relaxant"
+p123456789,2024-10-08 22:45:31,"stomach pain, diarrhea, vomiting",Gastroenteritis,Oral Rehydration
+g678901234,2024-10-23 22:45:31,"swollen tonsils, sore throat, difficulty swallowing",Pharyngitis,Penicillin
+w890123456,2024-10-21 22:45:31,"stomach pain, diarrhea",Gastroenteritis,"Loperamide, Oral Rehydration"
+e345678901,2023-12-15 22:45:31,"itchy skin, redness, rash",Dermatitis,Moisturizer
+g234567890,2024-10-09 22:45:31,"nasal congestion, fever, cough",Common Cold,"Cough Syrup, Paracetamol, Ibuprofen"
+e012345678,2024-08-12 22:45:31,"chest tightness, shortness of breath, wheezing",Asthma,"Inhaled Steroid, Salbutamol"
+r789012345,2024-07-21 22:45:31,"shortness of breath, wheezing",Asthma,Salbutamol
+c456789012,2024-11-14 22:45:31,"itchy skin, rash",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+s456789012,2024-01-04 22:45:31,"rash, itchy skin",Dermatitis,Moisturizer
+v789012345,2024-06-28 22:45:31,"nasal congestion, facial pain",Sinusitis,"Nasal Spray, Decongestant"
+a123456789,2024-05-10 22:45:31,"redness, itchy skin, rash",Dermatitis,"Moisturizer, Hydrocortisone Cream"
+w890123456,2024-03-21 22:45:31,"shortness of breath, wheezing",Asthma,Salbutamol
+o012345678,2023-12-21 22:45:31,"stiffness, muscle spasms",Back Pain,"Acetaminophen, Muscle Relaxant, Ibuprofen"
+c890123456,2024-11-17 22:45:31,"itchy skin, rash",Dermatitis,"Moisturizer, Hydrocortisone Cream"
+n345678901,2024-08-19 22:45:31,"difficulty swallowing, swollen tonsils",Pharyngitis,"Penicillin, Ibuprofen"
+g234567890,2024-02-08 22:45:31,"difficulty swallowing, swollen tonsils",Pharyngitis,Penicillin
+q678901234,2024-11-20 22:45:31,"fever, ear drainage, ear pain",Ear Infection,"Amoxicillin, Ibuprofen"
+g678901234,2024-03-27 22:45:31,"stiffness, muscle spasms, lower back pain",Back Pain,"Muscle Relaxant, Acetaminophen"
+l789012345,2024-03-02 22:45:31,"nasal congestion, facial pain",Sinusitis,Amoxicillin
+n901234567,2024-02-26 22:45:31,"itchy skin, redness",Dermatitis,Moisturizer
+a678901234,2024-01-19 22:45:31,"warmth, swelling, skin redness",Cellulitis,"Cephalexin, Ibuprofen"
+u678901234,2024-11-23 22:45:31,"cough, headache, fever, sore throat, nasal congestion",Common Cold,"Paracetamol, Cough Syrup, Ibuprofen"
+f123456789,2024-10-16 22:45:31,"nasal congestion, facial pain",Sinusitis,"Nasal Spray, Decongestant, Amoxicillin"
+o012345678,2024-05-12 22:45:31,"headache, fever, sore throat, nasal congestion",Common Cold,Paracetamol
+f123456789,2024-04-03 22:45:31,"difficulty swallowing, swollen tonsils, sore throat",Pharyngitis,Penicillin
+a678901234,2024-11-08 22:45:31,"rash, itchy skin, redness",Dermatitis,Moisturizer
+l123456789,2024-02-02 22:45:31,"mucus production, persistent cough",Bronchitis,"Azithromycin, Bronchodilator"
+u012345678,2024-02-17 22:45:31,"nausea, diarrhea",Gastroenteritis,Loperamide
+k012345678,2024-09-10 22:45:31,"headache, sore throat, nasal congestion, fever",Common Cold,"Cough Syrup, Paracetamol, Ibuprofen"
+t567890123,2024-05-18 22:45:31,"sneezing, nasal congestion",Seasonal Allergies,"Cetirizine, Antihistamine"
+w890123456,2023-12-07 22:45:31,"pain, skin redness, swelling",Cellulitis,Ibuprofen
+b789012345,2023-12-04 22:45:31,"itchy eyes, nasal congestion",Seasonal Allergies,Loratadine
+t567890123,2024-04-09 22:45:31,"persistent cough, mucus production, shortness of breath",Bronchitis,"Azithromycin, Bronchodilator, Cough Syrup"
+i456789012,2024-02-26 22:45:31,"mucus production, persistent cough, shortness of breath",Bronchitis,Cough Syrup
+u012345678,2024-08-09 22:45:31,"shortness of breath, wheezing",Asthma,"Salbutamol, Inhaled Steroid"
+a678901234,2024-07-12 22:45:31,"fever, reduced hearing",Ear Infection,Ibuprofen
+r789012345,2024-04-14 22:45:31,"stomach pain, vomiting, diarrhea, nausea",Gastroenteritis,Loperamide
+n345678901,2024-09-26 22:45:31,"cough, fever, nasal congestion, sore throat",Common Cold,Cough Syrup
+l789012345,2024-10-14 22:45:31,"muscle spasms, lower back pain, stiffness",Back Pain,"Muscle Relaxant, Ibuprofen"
+w890123456,2024-09-16 22:45:31,"reduced hearing, fever, ear drainage",Ear Infection,"Amoxicillin, Ibuprofen"
+d901234567,2024-02-04 22:45:31,"sneezing, nasal congestion, itchy eyes",Seasonal Allergies,"Cetirizine, Loratadine"
+r345678901,2024-06-17 22:45:31,"nasal congestion, sinus pressure, facial pain",Sinusitis,"Nasal Spray, Amoxicillin, Decongestant"
+k012345678,2024-02-11 22:45:31,"nausea, diarrhea",Gastroenteritis,Loperamide
+f123456789,2024-10-25 22:45:31,"cough, fever, sore throat, headache, nasal congestion",Common Cold,"Ibuprofen, Paracetamol, Cough Syrup"
+m234567890,2024-08-16 22:45:31,"mucus production, persistent cough",Bronchitis,"Cough Syrup, Bronchodilator, Azithromycin"
+i890123456,2024-02-14 22:45:31,"redness, rash, itchy skin",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+a678901234,2024-11-24 22:45:31,"pain, skin redness, warmth",Cellulitis,"Ibuprofen, Cephalexin"
+s890123456,2024-06-30 22:45:31,"facial pain, nasal congestion, sinus pressure",Sinusitis,"Amoxicillin, Decongestant, Nasal Spray"
+x901234567,2024-07-07 22:45:31,"sinus pressure, facial pain, nasal congestion",Sinusitis,"Amoxicillin, Nasal Spray, Decongestant"
+m890123456,2024-09-10 22:45:31,"swollen tonsils, sore throat, difficulty swallowing",Pharyngitis,"Ibuprofen, Penicillin"
+s456789012,2024-04-06 22:45:31,"ear pain, ear drainage, fever",Ear Infection,Ibuprofen
+u012345678,2024-01-21 22:45:31,"facial pain, nasal congestion",Sinusitis,"Amoxicillin, Nasal Spray, Decongestant"
+s890123456,2024-03-15 22:45:31,"chest tightness, wheezing, shortness of breath",Asthma,"Inhaled Steroid, Salbutamol"
+x345678901,2023-12-10 22:45:31,"stomach pain, nausea, diarrhea",Gastroenteritis,"Oral Rehydration, Loperamide"
+e345678901,2024-06-16 22:45:31,"shortness of breath, wheezing",Asthma,Inhaled Steroid
+j901234567,2023-11-27 22:45:31,"sore throat, swollen tonsils, difficulty swallowing",Pharyngitis,"Ibuprofen, Penicillin"
+n345678901,2024-05-20 22:45:31,"stiffness, lower back pain, muscle spasms",Back Pain,"Ibuprofen, Muscle Relaxant, Acetaminophen"
+r345678901,2024-07-25 22:45:31,"pain, warmth",Cellulitis,Cephalexin
+e012345678,2024-02-10 22:45:31,"diarrhea, nausea",Gastroenteritis,Oral Rehydration
+g234567890,2024-01-30 22:45:31,"fever, headache, sore throat",Common Cold,"Ibuprofen, Cough Syrup"
+e012345678,2024-03-03 22:45:31,"ear drainage, reduced hearing",Ear Infection,Amoxicillin
+s890123456,2024-10-15 22:45:31,"rash, itchy skin, redness",Dermatitis,Moisturizer
+f567890123,2024-03-06 22:45:31,"swollen tonsils, difficulty swallowing",Pharyngitis,Penicillin
+l789012345,2024-02-01 22:45:31,"stiffness, muscle spasms",Back Pain,"Ibuprofen, Muscle Relaxant, Acetaminophen"
+g678901234,2024-01-12 22:45:31,"ear drainage, ear pain, fever, reduced hearing",Ear Infection,Ibuprofen
+o456789012,2024-01-31 22:45:31,"itchy eyes, nasal congestion",Seasonal Allergies,Cetirizine
+r789012345,2024-02-07 22:45:31,"wheezing, shortness of breath, chest tightness",Asthma,"Salbutamol, Inhaled Steroid"
+i456789012,2024-06-06 22:45:31,"warmth, pain, skin redness, swelling",Cellulitis,Cephalexin
+p123456789,2024-06-15 22:45:31,"rash, redness, itchy skin",Dermatitis,"Hydrocortisone Cream, Moisturizer"
+u678901234,2024-11-08 22:45:31,"headache, cough, nasal congestion, sore throat, fever",Common Cold,"Ibuprofen, Paracetamol, Cough Syrup"
+k012345678,2024-07-21 22:45:31,"mucus production, persistent cough",Bronchitis,Bronchodilator
+n345678901,2024-06-02 22:45:31,"muscle spasms, lower back pain, stiffness",Back Pain,Ibuprofen
+x345678901,2024-01-30 22:45:31,"facial pain, sinus pressure",Sinusitis,Amoxicillin
+o012345678,2023-12-29 22:45:31,"stomach pain, diarrhea",Gastroenteritis,"Loperamide, Oral Rehydration"
+l123456789,2024-05-03 22:45:31,"muscle spasms, lower back pain, stiffness",Back Pain,"Acetaminophen, Ibuprofen, Muscle Relaxant"
+f567890123,2024-06-07 22:45:31,"nausea, diarrhea",Gastroenteritis,"Oral Rehydration, Loperamide"
+o012345678,2023-11-27 22:45:31,"sore throat, nasal congestion",Common Cold,"Paracetamol, Ibuprofen, Cough Syrup"
+o012345678,2024-09-19 22:45:31,"swollen tonsils, sore throat",Pharyngitis,"Ibuprofen, Penicillin"
+o012345678,2024-05-06 22:45:31,"sneezing, itchy eyes",Seasonal Allergies,"Cetirizine, Loratadine, Antihistamine"
+t567890123,2023-12-19 22:45:31,"cough, nasal congestion",Common Cold,"Paracetamol, Cough Syrup"
+j567890123,2024-09-30 22:45:31,"nasal congestion, sneezing, itchy eyes",Seasonal Allergies,Loratadine
+t901234567,2024-06-25 22:45:31,"swollen tonsils, difficulty swallowing",Pharyngitis,"Penicillin, Ibuprofen"
+u678901234,2024-06-04 22:45:31,"nasal congestion, itchy eyes",Seasonal Allergies,"Antihistamine, Loratadine, Cetirizine"
+s890123456,2024-03-15 22:45:31,"itchy eyes, sneezing",Seasonal Allergies,"Cetirizine, Loratadine"
+a123456789,2024-03-07 22:45:31,"nasal congestion, facial pain",Sinusitis,Decongestant
+e012345678,2024-06-09 22:45:31,"persistent cough, mucus production, shortness of breath",Bronchitis,"Azithromycin, Bronchodilator"
+f123456789,2023-12-27 22:45:31,"shortness of breath, wheezing",Asthma,Inhaled Steroid
+o456789012,2024-02-02 22:45:31,"pain, swelling",Cellulitis,Ibuprofen
+s456789012,2024-05-25 22:45:31,"skin redness, pain, swelling, warmth",Cellulitis,"Cephalexin, Ibuprofen"
+d234567890,2024-08-09 22:45:31,"headache, fever, nasal congestion, sore throat, cough",Common Cold,Paracetamol
+l123456789,2023-12-04 22:45:31,"shortness of breath, wheezing",Asthma,"Salbutamol, Inhaled Steroid"
+o012345678,2024-09-01 22:45:31,"stomach pain, nausea",Gastroenteritis,Loperamide
+i456789012,2024-08-08 22:45:31,"sore throat, difficulty swallowing",Pharyngitis,"Penicillin, Ibuprofen"
+o012345678,2024-02-08 22:45:31,"ear drainage, fever",Ear Infection,Amoxicillin
+j567890123,2024-03-12 22:45:31,"shortness of breath, wheezing, chest tightness",Asthma,Salbutamol
+f123456789,2024-03-20 22:45:31,"diarrhea, vomiting, nausea",Gastroenteritis,"Oral Rehydration, Loperamide"
+q678901234,2024-03-10 22:45:31,"stiffness, lower back pain",Back Pain,"Acetaminophen, Muscle Relaxant"
+a678901234,2024-03-24 22:45:31,"lower back pain, stiffness, muscle spasms",Back Pain,"Acetaminophen, Ibuprofen, Muscle Relaxant"
+o456789012,2024-01-08 22:45:31,"rash, itchy skin",Dermatitis,Hydrocortisone Cream
+i456789012,2024-03-04 22:45:31,"facial pain, sinus pressure, nasal congestion",Sinusitis,Nasal Spray
+m890123456,2023-11-28 22:45:31,"sore throat, headache, cough",Common Cold,Cough Syrup
+o012345678,2024-11-14 22:45:31,"diarrhea, vomiting",Gastroenteritis,Loperamide
+h345678901,2024-08-14 22:45:31,"itchy eyes, sneezing",Seasonal Allergies,"Antihistamine, Cetirizine"
+g234567890,2024-02-10 22:45:31,"warmth, skin redness, swelling",Cellulitis,Ibuprofen
+s456789012,2024-09-02 22:45:31,"fever, headache, nasal congestion, cough, sore throat",Common Cold,Paracetamol
+d234567890,2024-01-08 22:45:31,"stomach pain, nausea, vomiting",Gastroenteritis,"Loperamide, Oral Rehydration"

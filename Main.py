@@ -1,4 +1,5 @@
 import UserInteract
+import PipeLineObject
 def main():
     while True:
         user_input = input("Enter patient ID or type 'new' to create a new patient: ").strip()
@@ -9,7 +10,7 @@ def main():
             break
 
         try:
-            patient = get_patient_profile(user_input)
+            patient = PipeLineObject.get_patient_profile(user_input)
             print(f"Patient retrieved: {patient}")
             break
         except ValueError as e:
