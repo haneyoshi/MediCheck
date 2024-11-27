@@ -1,11 +1,11 @@
-import UserInteract
+import UserRequest
 import PipeLineObject
 def main():
     while True:
         user_input = input("Enter patient ID or type 'new' to create a new patient: ").strip()
         
         if user_input.lower() == 'new':
-            new_patient = UserInteract.create_new_patient()  # Implement your create_new_patient function
+            new_patient = UserRequest.create_new_patient()  # Implement your create_new_patient function
             print(f"New patient created: {new_patient}")
             break
 

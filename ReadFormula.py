@@ -109,3 +109,30 @@ def fetch_most_prescribed_medicines(limit=10):
         LIMIT %s;
     """
     return execute_query(query, (limit,))
+
+def fetch_symptom_combinations(symptoms):
+    # Construct SQL query
+    sql_query = """
+    WITH RECURSIVE SymptomCombinations AS (
+        SELECT vs1.visit_id, vs2.symptom_id AS co_symptom_id, COUNT(*) AS frequency
+        FROM VisitSymptom vs1
+        INNER JOIN VisitSymptom vs2 ON vs1.visit_id = vs2.visit_id AND vs1.symptom_id != vs2.symptom_id
+        WHERE vs1.symptom_id = %s
+        GROUP BY vs1.visit_id, vs2.symptom_id
+
+        UNION ALL
+
+        SELECT sc.visit_id, vs3.symptom_id AS co_symptom_id, COUNT(*) AS frequency
+        FROM SymptomCombinations sc
+        INNER JOIN VisitSymptom vs3 ON sc.visit_id = vs3.visit_id
+        WHERE vs3.symptom_id NOT IN (%s)
+        GROUP BY sc.visit_id, vs3.symptom_id
+    )
+    SELECT co_symptom_id, SUM(frequency) AS total_frequency
+    FROM SymptomCombinations
+    GROUP BY co_symptom_id
+    ORDER BY total_frequency DESC;
+    """
+
+    # Execute query
+    return execute_query(sql_query, (symptoms[0], tuple(symptoms)))
