@@ -110,8 +110,11 @@ def fetch_most_prescribed_medicines(limit=10):
     """
     return execute_query(query, (limit,))
 
+
 def fetch_symptom_combinations(symptoms):
     # Construct SQL query
+    #  Common Table Expression (CTE)
+    # creates SymptomCombinations as a temporary result set, then uses it in the final query.
     sql_query = """
     WITH RECURSIVE SymptomCombinations AS (
         SELECT vs1.visit_id, vs2.symptom_id AS co_symptom_id, COUNT(*) AS frequency
