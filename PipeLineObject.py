@@ -1,8 +1,8 @@
-import Patient
-import Medicine
-import Disease
-import VisitRecord
-import Symptom
+from Patient import Patient
+from Medicine import Medicine
+from Disease import Disease
+from VisitRecord import VisitRecord
+from Symptom import Symptom
 import ReadFormula
 
 def get_patient_profile(patient_id):

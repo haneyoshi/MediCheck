@@ -15,7 +15,7 @@ for _, row in df.iterrows():
     prescribed_medicines = row['prescribed_medicines'].split(', ')
 
     # Insert visit data
-    visit_id = insert_visit(patient_id)  # Insert visit data, returning visit_id
+    visit_id = insert_visit(patient_id,visit_date)  # Insert visit data, returning visit_id
 
     # Insert symptoms and link to visit
     for symptom_name in symptoms:

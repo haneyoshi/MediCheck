@@ -2,9 +2,10 @@
 import Medicine
 import Symptom
 import Disease
+from datetime import datetime 
 class VisitRecord:
-    def __init__(self,date,visit_id,diagnosed_disease: Disease):
-        self.date = date
+    def __init__(self,visit_id,diagnosed_disease: Disease,date = None):
+        self.date = date or datetime.now()
         self.visit_id = visit_id
         self.diagnosed_disease = diagnosed_disease
         self.prescribed_medicines =[]

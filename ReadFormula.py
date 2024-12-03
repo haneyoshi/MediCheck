@@ -89,7 +89,7 @@ def fetch_all_patient_data(patient_id):
 # Fetch most common symptoms
 def fetch_most_common_symptoms(limit=10):
     query = """
-        SELECT Symptom.symptom_name, COUNT(*) AS frequency
+        SELECT Symptom.sympyom_id, Symptom.symptom_name, COUNT(*) AS frequency
         FROM VisitSymptom
         INNER JOIN Symptom ON VisitSymptom.symptom_id = Symptom.symptom_id
         GROUP BY Symptom.symptom_name
