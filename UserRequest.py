@@ -2,11 +2,15 @@ from Patient import Patient
 # no need to refer the module prefix => Patient.Patient(patient_id=1, name="Alice")
 import InsertionFormula
 import PipeLineObject
-import Symptom
 from ClinicState import ClinicState
+from UseCasesInteration import Diagnosing
+import UseCasesAlgorithm
+
+# instance to start take patient for a day
+clinic_state = ClinicState()
 
 def program_start():
-    ClinicState.update_top_common_symptoms
+    clinic_state.update_top_common_symptoms()
 
 def patient_check_in():
     while True:
@@ -15,13 +19,13 @@ def patient_check_in():
         if user_input.lower() == 'new':
             new_patient = create_new_patient()  # Implement your create_new_patient function
             print(f"New patient created: {new_patient}")
-            ClinicState.add_to_queue(new_patient)
+            clinic_state.add_to_queue(new_patient)
             break
 
         try:
             patient = PipeLineObject.get_patient_profile(user_input)
             print(f"Patient retrieved: {patient}")
-            ClinicState.add_to_queue(patient)
+            clinic_state.add_to_queue(patient)
             break
         except ValueError as e:
             print(e)
@@ -29,44 +33,31 @@ def patient_check_in():
             
 
 def take_next_patien():
+    # create instance to store user inputs
+    diagnosing = Diagnosing()
     while True:  # Outer loop for the patient process
         print("\nProcessing next patient...")
-
-        # Symptom Entry Loop
-        symptoms = []
-        while True:
-            symptom_input = input("Enter a symptom (or type 'done' to finish): ").strip()
-            if symptom_input.lower() == 'done':
-                break
-            symptoms.append(symptom_input)
-        print(f"Symptoms recorded: {symptoms}")
-
-        # Diagnosis Entry
-        diagnosis = input("Enter diagnosis: ").strip()
-        print(f"Diagnosis recorded: {diagnosis}")
-
-        # Prescribed Medicines Loop
-        medicines = []
-        while True:
-            medicine_input = input("Enter a prescribed medicine (or type 'done' to finish): ").strip()
-            if medicine_input.lower() == 'done':
-                break
-            medicines.append(medicine_input)
-        print(f"Prescribed medicines recorded: {medicines}")
+        print(f"\nPatietn:{clinic_state.current_patient}")
+        print(f"\ncommon symptoms of recent patients:{clinic_state.recent_top_common_symptoms}")
+        diagnosing.taking_repoted_symptoms()
+        diagnosing.giving_diagnosed_disease()
+        diagnosing.prescribing_medicines()
 
         # Confirm and Break Outer Loop
-        print(f"\nSummary for this patient:\nSymptoms: {symptoms}\nDiagnosis: {diagnosis}\nMedicines: {medicines}")
-        confirm = input("Confirm this entry? (yes/no): ").strip().lower()
+        # print out summary
+        diagnosing.diagnose_summary()
+        confirm = input("\nConfirm this entry? (yes/no): ").strip().lower()
         if confirm == 'yes':
             print("Patient process completed.")
             break
         else:
             print("Restarting input for this patient...")
-    
+    patient = pateint_dequeue()
+    UseCasesAlgorithm.patient_case_complete(patient, diagnosing.reported_symptoms, diagnosing.diagnosed_disease, diagnosing.prescribed_medicines)
 
 def pateint_dequeue():
     # return the first patient in queue
-    return ClinicState.pateint_dequeue()
+    return clinic_state.pateint_dequeue()
 
 def create_new_patient():
     print("Creating a new patient...")
