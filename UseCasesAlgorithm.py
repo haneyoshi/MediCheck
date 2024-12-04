@@ -10,6 +10,10 @@ def patient_case_complete(patient: Patient, symptoms, disease, medicines):
     InsertionFormula.insert_prescribedMedicine(prescription_id,medicines)
     print(f"patient's visit record achive{patient}")
 
+def add_new_record_to_Patient_instance():
+    # fetch visit_id -> create VisitRecord -> patient. add visit Record
+    print("add")
+
 def find_most_frequent_co_occurring_symptoms(symptom_name_list):
     print("find")
 
