@@ -37,3 +37,22 @@ def get_patient_profile(patient_id):
 
     return patient
 
+def add_Patient_visit_to_instance(visit_id, patient:Patient):
+    # visit = (visit_id, patient_id, date)
+    visit_data = ReadFormula.fetch_visit_by_id(visit_id)
+    visit_id, patient_id, visit_date = visit_data
+    # symptom = (symptom_id, symptom_name)
+    symptom_data = ReadFormula.fetch_symptoms_by_visit_id(visit_id)
+    symptoms = [Symptom(**symptom) for symptom in symptom_data]
+    # prescription = (prescription_id)
+    prescription_data = ReadFormula.fetch_prescriptions_by_visit_id(visit_id)
+    # disease = (disease_id, disease_name)
+    disease_data = ReadFormula.fetch_disease_by_prescription_id(prescription_data[0])
+    disease = Disease(disease_id=disease_data[0], disease_name = disease_data[1])
+    # medicine = (medicine_id, medicine_name)
+    medicine_data = ReadFormula.fetch_medicines_by_prescription_id(prescription_data[0])
+    medicines = [Medicine(**medicine) for medicine in medicine_data]
+    visit = VisitRecord(date=visit_date,visit_id=visit_id,diagnosed_disease=disease)
+    visit.prescribed_medicines = medicines
+    visit.reported_symptoms = symptoms
+    patient.records.append(visit)

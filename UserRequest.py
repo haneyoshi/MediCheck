@@ -32,11 +32,14 @@ def patient_check_in():
             print("Please try again or type 'new' to create a new patient.")
             
 
-def take_next_patien():
+def take_next_patient():
+    patient = pateint_dequeue()
+    print("\nProcessing next patient...")
+
     # create instance to store user inputs
     diagnosing = Diagnosing()
+
     while True:  # Outer loop for the patient process
-        print("\nProcessing next patient...")
         print(f"\nPatietn:{clinic_state.current_patient}")
         print(f"\ncommon symptoms of recent patients:{clinic_state.recent_top_common_symptoms}")
         diagnosing.taking_repoted_symptoms()
@@ -52,7 +55,6 @@ def take_next_patien():
             break
         else:
             print("Restarting input for this patient...")
-    patient = pateint_dequeue()
     UseCasesAlgorithm.patient_case_complete(patient, diagnosing.reported_symptoms, diagnosing.diagnosed_disease, diagnosing.prescribed_medicines)
 
 def pateint_dequeue():
@@ -61,12 +63,29 @@ def pateint_dequeue():
 
 def create_new_patient():
     print("Creating a new patient...")
-    patient_id = input("Enter patient ID: ").strip()
-    first_name = input("Enter first name: ").strip()
-    last_name = input("Enter last name: ").strip()
-    date_of_birth = input("Enter date of birth (YYYY-MM-DD): ").strip()
-    patient_data = (patient_id,first_name,last_name,date_of_birth)
-    new_record = InsertionFormula.insert_patient(patient_data)
-    print(f"new patient record{new_record}")
-    patient = Patient(id=patient_id,fName=first_name,lName=last_name,dBirth=date_of_birth)
-    return patient
+    while True:
+        try:
+            # Validate Patient ID
+            patient_id = input("Enter patient ID (e.g., A123456789): ").strip()
+            if not patient_id.isalnum() or len(patient_id) != 10 or not patient_id[0].isupper() or not patient_id[1:].isdigit():
+                raise ValueError("Invalid Patient ID. It must start with a capital letter followed by 9 digits.")
+
+            first_name = input("Enter first name: ").strip()
+            last_name = input("Enter last name: ").strip()
+
+            # Validate date format
+            date_of_birth = input("Enter date of birth (YYYY-MM-DD): ").strip()
+            from datetime import datetime
+            datetime.strptime(date_of_birth, "%Y-%m-%d")
+
+            # Insert into database
+            patient_data = (patient_id, first_name, last_name, date_of_birth)
+            InsertionFormula.insert_patient(patient_data)
+
+            # Create and return patient object
+            patient = Patient(patient_id, first_name, last_name, date_of_birth)
+            return patient
+        except ValueError as ve:
+            print(f"Input Error: {ve}")
+        except Exception as e:
+            print(f"Error creating patient: {e}")
