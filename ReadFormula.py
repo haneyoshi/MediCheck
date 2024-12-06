@@ -85,6 +85,7 @@ def fetch_all_patient_data(patient_id):
         WHERE Patient.patient_id = %s;
     """
     return execute_query(query, (patient_id,))
+    # syntax "(patient_id,)" for single parameter
 
 # Fetch most common symptoms
 def fetch_most_common_symptoms(limit=10):
@@ -110,27 +111,47 @@ def fetch_most_prescribed_medicines(limit=10):
     """
     return execute_query(query, (limit,))
 
+def fetch_symptom_ids_by_names(symptom_names):
+    query = "SELECT symptom_id FROM Symptom WHERE symptom_name IN (%s);"
+    placeholders = ', '.join(['%s'] * len(symptom_names))
+    # ['%s'] * len(symptom_names):This creates a list of %s placeholders with the length equal to the number of symptom names provided.
+    # ', '.join(...): Joins all the %s placeholders into a single string separated by commas, so it matches the correct format for the IN clause.
+    query = query.replace('%s', placeholders)
+    return execute_query(query, tuple(symptom_names))
+    # syntax "tuple(symptom_names)" for multiple parameters
 
-def fetch_symptom_combinations(symptoms):
+def fetch_most_possible_combinations_for_given_symptoms(symptoms):
     # Construct SQL query
     #  Common Table Expression (CTE)
     # creates SymptomCombinations as a temporary result set, then uses it in the final query.
-    sql_query = """
-    WITH RECURSIVE SymptomCombinations AS (
-        SELECT vs1.visit_id, vs2.symptom_id AS co_symptom_id, COUNT(*) AS frequency
+    placeholders = ', '.join(['%s'] * len(symptoms))
+    query = f"""
+    WITH SymptomCombinations AS (
+        -- Get individual co-occurring symptoms for each input symptom
+        SELECT vs1.symptom_id AS input_symptom, vs2.symptom_id AS co_symptom_id, COUNT(*) AS frequency
         FROM VisitSymptom vs1
-        INNER JOIN VisitSymptom vs2 ON vs1.visit_id = vs2.visit_id AND vs1.symptom_id != vs2.symptom_id
-        WHERE vs1.symptom_id = %s
-        GROUP BY vs1.visit_id, vs2.symptom_id
+        INNER JOIN VisitSymptom vs2 
+            ON vs1.visit_id = vs2.visit_id AND vs1.symptom_id != vs2.symptom_id
+        WHERE vs1.symptom_id IN ({placeholders})  -- Input symptoms
+        GROUP BY vs1.symptom_id, vs2.symptom_id
 
         UNION ALL
 
-        SELECT sc.visit_id, vs3.symptom_id AS co_symptom_id, COUNT(*) AS frequency
-        FROM SymptomCombinations sc
-        INNER JOIN VisitSymptom vs3 ON sc.visit_id = vs3.visit_id
-        WHERE vs3.symptom_id NOT IN (%s)
-        GROUP BY sc.visit_id, vs3.symptom_id
+        -- Get co-occurring symptoms for all given symptoms collectively
+        SELECT vs3.symptom_id AS input_symptom, vs4.symptom_id AS co_symptom_id, COUNT(*) AS frequency
+        FROM VisitSymptom vs3
+        INNER JOIN VisitSymptom vs4 
+            ON vs3.visit_id = vs4.visit_id AND vs3.symptom_id != vs4.symptom_id
+        WHERE vs3.visit_id IN (
+            SELECT visit_id
+            FROM VisitSymptom
+            WHERE symptom_id IN ({placeholders})
+            GROUP BY visit_id
+            HAVING COUNT(DISTINCT symptom_id) = %d  -- Ensure all input symptoms are present
+        )
+        GROUP BY vs3.symptom_id, vs4.symptom_id
     )
+    -- Final Aggregation
     SELECT co_symptom_id, SUM(frequency) AS total_frequency
     FROM SymptomCombinations
     GROUP BY co_symptom_id
@@ -138,4 +159,7 @@ def fetch_symptom_combinations(symptoms):
     """
 
     # Execute query
-    return execute_query(sql_query, (symptoms[0], tuple(symptoms)))
+    return execute_query(query, tuple(symptoms) + tuple(symptoms) + (len(symptoms),))
+    # two tuple(symptoms) for base case and recursive case respectively
+    # (len(symptoms),)) %d placeholder in the HAVING COUNT(DISTINCT symptom_id) = %d clause
+
