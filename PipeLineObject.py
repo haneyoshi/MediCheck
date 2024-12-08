@@ -56,3 +56,7 @@ def add_Patient_visit_to_instance(visit_id, patient:Patient):
     visit.prescribed_medicines = medicines
     visit.reported_symptoms = symptoms
     patient.records.append(visit)
+
+def coocurring_symptom_instance(symptom_data):
+    symptoms = [Symptom(**symptom) for symptom in symptom_data]
+    return symptoms

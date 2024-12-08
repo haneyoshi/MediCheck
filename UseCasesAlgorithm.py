@@ -18,10 +18,14 @@ def add_new_record_to_Patient_instance(visit_id,patient: Patient):
     print(f"fetch local instance{patient}")
 
 def find_most_frequent_co_occurring_symptoms(symptom_name_list):
-    print("find")
+    # retrieve corresponding symptom ids
+    co_occurring_symptoms = ReadFormula.fetch_most_possible_combinations_for_given_symptoms(symptom_name_list)
+    # return symptom instance object list
+    return PipeLineObject.coocurring_symptom_instance(co_occurring_symptoms)
+
 
 def find_most_possible_disease(symptom_list):
-    print("find")
+    return ReadFormula.fetch_most_possible_disease_for_given_symptoms(symptom_list)
 
-def find_possible_medicines(symptom_list):
-    print("find")
+def find_relevant_medicines(symptom_list,disease):
+    return ReadFormula.fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_list,disease)

@@ -4,7 +4,6 @@ import InsertionFormula
 import PipeLineObject
 from ClinicState import ClinicState
 from UseCasesInteration import Diagnosing
-import UseCasesAlgorithm
 
 # instance to start take patient for a day
 clinic_state = ClinicState()
@@ -55,7 +54,7 @@ def take_next_patient():
             break
         else:
             print("Restarting input for this patient...")
-    UseCasesAlgorithm.patient_case_complete(patient, diagnosing.reported_symptoms, diagnosing.diagnosed_disease, diagnosing.prescribed_medicines)
+        diagnosing.complete_diagnose(patient)
 
 def pateint_dequeue():
     # return the first patient in queue

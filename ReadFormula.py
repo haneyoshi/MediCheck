@@ -120,10 +120,18 @@ def fetch_symptom_ids_by_names(symptom_names):
     return execute_query(query, tuple(symptom_names))
     # syntax "tuple(symptom_names)" for multiple parameters
 
-def fetch_most_possible_combinations_for_given_symptoms(symptoms):
+def fetch_disease_id_by_name(disease_name):
+    query = "SELECT Disease.dease_id FROM Diease WHERE patient_name = %s"
+    return execute_query(query, (disease_name,))
+
+def fetch_most_possible_combinations_for_given_symptoms(symptom_names):
     # Construct SQL query
     #  Common Table Expression (CTE)
     # creates SymptomCombinations as a temporary result set, then uses it in the final query.
+    # Note, CTE: 1)Non-Recursive CTEs => with..., 2)Recursive CTE => WITH RECURSIVE
+
+    # retrieve corresponding symptom ids
+    symptoms = fetch_symptom_ids_by_names(symptom_names)
     placeholders = ', '.join(['%s'] * len(symptoms))
     query = f"""
     WITH SymptomCombinations AS (
@@ -152,9 +160,11 @@ def fetch_most_possible_combinations_for_given_symptoms(symptoms):
         GROUP BY vs3.symptom_id, vs4.symptom_id
     )
     -- Final Aggregation
-    SELECT co_symptom_id, SUM(frequency) AS total_frequency
-    FROM SymptomCombinations
-    GROUP BY co_symptom_id
+    SELECT sc.co_symptom_id, s.symptom_name, SUM(sc.frequency) AS total_frequency
+    FROM SymptomCombinations sc
+    INNER JOIN Symptom s
+        ON sc.co_symptom_id = s.symptom_id
+    GROUP BY sc.co_symptom_id, s.symptom_name
     ORDER BY total_frequency DESC;
     """
 
@@ -162,4 +172,71 @@ def fetch_most_possible_combinations_for_given_symptoms(symptoms):
     return execute_query(query, tuple(symptoms) + tuple(symptoms) + (len(symptoms),))
     # two tuple(symptoms) for base case and recursive case respectively
     # (len(symptoms),)) %d placeholder in the HAVING COUNT(DISTINCT symptom_id) = %d clause
+
+def fetch_most_possible_disease_for_given_symptoms(symptom_names):
+    # Filtering for "All Symptoms":
+    # 1)Focuses on Relevant Data, 2)Data-Driven Accuracy, 3)Simplicity and Scalability, 4)Practical Relevance
+    symptoms = fetch_symptom_ids_by_names(symptom_names)
+    placeholders = ', '.join(['%s'] * len(symptoms))
+    query = f"""
+    SELECT d.disease_name, COUNT(*) AS total_frequency
+    FROM (
+        SELECT visit_id
+        FROM VisitSymptom
+        WHERE symptom_id IN ({placeholders})
+        GROUP BY visit_id
+        HAVING COUNT(DISTINCT symptom_id) = %d  -- All input symptoms must be present
+    ) matched_visits
+    INNER JOIN Prescription p ON matched_visits.visit_id = p.visit_id
+    INNER JOIN Disease d ON p.disease_id = d.disease_id
+    GROUP BY d.disease_name
+    ORDER BY total_frequency DESC;          
+    """
+    return execute_query(query, tuple(symptoms) + (len(symptoms),))
+
+def fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_names, disease_name):
+    # Fetch relevant symptom IDs based on symptom names
+    symptoms = fetch_symptom_ids_by_names(symptom_names)
+    disease_id = fetch_disease_id_by_name(disease_name)
+
+    symptom_placeholders = ', '.join(['%s'] * len(symptoms))
+
+    # Define the query combining A (medicines for symptoms) and B (medicines for diseases)
+    query = f"""
+    WITH SymptomMedicines AS (
+        -- Medicines prescribed for given symptoms
+        SELECT pm.medicine_id, m.medicine_name, COUNT(*) AS frequency
+        FROM VisitSymptom vs
+        INNER JOIN Prescription p ON vs.visit_id = p.visit_id
+        INNER JOIN PrescribedMedicine pm ON p.prescription_id = pm.prescription_id
+        INNER JOIN Medicine m ON pm.medicine_id = m.medicine_id
+        WHERE vs.symptom_id IN ({symptom_placeholders})  -- Input symptoms
+        GROUP BY pm.medicine_id, m.medicine_name
+    ),
+    DiseaseMedicines AS (
+        -- Medicines prescribed for a specific disease
+        SELECT pm.medicine_id, m.medicine_name, COUNT(*) AS frequency
+        FROM Disease d
+        INNER JOIN Prescription p ON d.disease_id = p.disease_id
+        INNER JOIN PrescribedMedicine pm ON p.prescription_id = pm.prescription_id
+        INNER JOIN Medicine m ON pm.medicine_id = m.medicine_id
+        WHERE d.disease_id = %s
+        GROUP BY pm.medicine_id, m.medicine_name
+    )
+    -- Combine and aggregate results
+    SELECT medicine_name, SUM(frequency) AS total_frequency
+    FROM (
+        SELECT * FROM SymptomMedicines
+        UNION ALL
+        SELECT * FROM DiseaseMedicines
+    ) CombinedMedicines
+    GROUP BY medicine_name
+    ORDER BY total_frequency DESC;
+    """
+
+    # Execute the query with the appropriate parameters
+    return execute_query(query, tuple(symptoms) + (disease_id,))
+
+
+
 
