@@ -1,49 +1,76 @@
 import mysql.connector
-from ConnectDatabase import connection_pool
+from ConnectDatabase2 import get_connection
 
 # This function is used to handle data insertions, reads, updates, and deletions.
 def execute_query(query, params=None):
+    """
+    Execute a query using a direct database connection.
+    """
+    connection = None
+    cursor = None
     try:
-        connection = connection_pool.get_connection()
-        myCursor = connection.cursor(dictionary=True)
-        # Use dictionary=True to get better formatted output when reading
+        # Get a connection
+        connection = get_connection()
+        cursor = connection.cursor(buffered=True, dictionary=True)
+        print(f"Executing Query:\n{query} with Params: {params}")
 
-        # Execute the query with or without parameters
+        # Execute the query
         if params:
-            myCursor.execute(query, params)
+            print("Executing query with parameters.")
+            cursor.execute(query, params)
         else:
-            myCursor.execute(query)
-        
-        print(f"Execute: {query} with Params: {params}")
+            cursor.execute(query)
 
-        # If the query is a SELECT, fetch the results
-        if query.strip().upper().startswith("SELECT"):
-            results = myCursor.fetchall()
+        # If the query is a SELECT, fetch results
+        if query.strip().upper().startswith("SELECT") or "WITH" in query.strip().upper():
+            print("Fetching results for SELECT query.")
+            results = cursor.fetchall()
+            print(f"\nQuery Results: {results}")
             return results
 
-        # For INSERT, UPDATE, or DELETE, commit the changes and return the affected row count or last inserted ID
+        # Commit for non-SELECT queries
         connection.commit()
         if query.strip().upper().startswith("INSERT"):
-            return myCursor.lastrowid
+            return cursor.lastrowid
         else:
-            return myCursor.rowcount
-
+            return cursor.rowcount
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
-        connection.rollback()
-        # rollback():ensures that incomplete or invalid operations don’t affect the database.
+        print(f"Database error: {err}")
+        if connection:
+            connection.rollback()
+        return None
     finally:
-        myCursor.close()
-        connection.close()
+        if cursor:
+            cursor.close()
+            print("Cursor closed.")
+        if connection:
+            connection.close()
+            print("Connection closed.")
+
 
 # a helper function to check if a value already exists
-def get_or_insert(table_name, column_name, value):
-    # Step 1: Check if value already exists in the table
+def get_or_insert(table_name, column_name, value, additional_values=None):
+    """
+    A helper function to check if a record exists, and insert if not.
+    Handles tables with and without auto-generated IDs.
+    """
+    if additional_values is None:
+        additional_values = {}
+
+    # Step 1: Check if the value exists
     check_formula = f"SELECT {column_name}_id FROM {table_name} WHERE {column_name}_name = %s"
     result = execute_query(check_formula, (value,))
     if result:
         return result[0][f"{column_name}_id"]
 
-    # Step 2: If it doesn't exist, insert the value
-    insert_formula = f"INSERT INTO {table_name}({column_name}_name) VALUES(%s)"
-    return execute_query(insert_formula, (value,))
+    # Step 2: Insert if it doesn't exist
+    if not additional_values:
+        # For tables with only one column value
+        insert_formula = f"INSERT INTO {table_name}({column_name}_name) VALUES(%s)"
+        return execute_query(insert_formula, (value,))
+    else:
+        # For tables like Patient, where multiple columns need to be inserted
+        column_names = ", ".join(additional_values.keys())
+        placeholders = ", ".join(["%s"] * len(additional_values))
+        insert_formula = f"INSERT INTO {table_name}({column_names}) VALUES({placeholders})"
+        return execute_query(insert_formula, tuple(additional_values.values()))

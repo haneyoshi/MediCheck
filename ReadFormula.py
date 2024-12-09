@@ -52,17 +52,18 @@ def fetch_prescriptions_by_visit_id(visit_id):
 
 # fetch diagnosed disease fpr a specifi presciption
 def fetch_disease_by_prescription_id(prescription_id):
+    print(f"\nFetching disease for prescription ID: {prescription_id}")
     query = """SELECT Disease.disease_id, Disease.disease_name
         FROM Prescription
         INNER JOIN Disease ON Prescription.disease_id = Disease.disease_id
         WHERE Prescription.prescription_id = %s
         """
-    return execute_query(query,prescription_id)
+    return execute_query(query,(prescription_id,))
 
 # Fetch medicines for a specific prescription
 def fetch_medicines_by_prescription_id(prescription_id):
     query = """
-        SELECT Medicine.medicine_id, Medicine.medicine.name
+        SELECT Medicine.medicine_id, Medicine.medicine_name
         FROM PrescribedMedicine
         INNER JOIN Medicine ON PrescribedMedicine.medicine_id = Medicine.medicine_id
         WHERE PrescribedMedicine.prescription_id = %s
@@ -90,7 +91,7 @@ def fetch_all_patient_data(patient_id):
 # Fetch most common symptoms
 def fetch_most_common_symptoms(limit=10):
     query = """
-        SELECT Symptom.sympyom_id, Symptom.symptom_name, COUNT(*) AS frequency
+        SELECT Symptom.symptom_id, Symptom.symptom_name, COUNT(*) AS frequency
         FROM VisitSymptom
         INNER JOIN Symptom ON VisitSymptom.symptom_id = Symptom.symptom_id
         GROUP BY Symptom.symptom_name
@@ -112,17 +113,26 @@ def fetch_most_prescribed_medicines(limit=10):
     return execute_query(query, (limit,))
 
 def fetch_symptom_ids_by_names(symptom_names):
+    if not symptom_names:
+        print("No symptom names provided.")  # Debugging
+        return []
     query = "SELECT symptom_id FROM Symptom WHERE symptom_name IN (%s);"
     placeholders = ', '.join(['%s'] * len(symptom_names))
     # ['%s'] * len(symptom_names):This creates a list of %s placeholders with the length equal to the number of symptom names provided.
     # ', '.join(...): Joins all the %s placeholders into a single string separated by commas, so it matches the correct format for the IN clause.
     query = query.replace('%s', placeholders)
-    return execute_query(query, tuple(symptom_names))
+    # Extract the symptom_id values into a list
+    result = execute_query(query, tuple(symptom_names))
+    return [row['symptom_id'] for row in result] if result else []
     # syntax "tuple(symptom_names)" for multiple parameters
 
 def fetch_disease_id_by_name(disease_name):
     query = "SELECT Disease.dease_id FROM Diease WHERE patient_name = %s"
-    return execute_query(query, (disease_name,))
+    result = execute_query(query, (disease_name,))
+    if not result:
+        print(f"No disease found with name: {disease_name}")  # Debugging
+        return None
+    return result[0]['disease_id']
 
 def fetch_most_possible_combinations_for_given_symptoms(symptom_names):
     # Construct SQL query
@@ -131,8 +141,15 @@ def fetch_most_possible_combinations_for_given_symptoms(symptom_names):
     # Note, CTE: 1)Non-Recursive CTEs => with..., 2)Recursive CTE => WITH RECURSIVE
 
     # retrieve corresponding symptom ids
+    print(f"\nFetch symptom id(s) for {symptom_names}")
     symptoms = fetch_symptom_ids_by_names(symptom_names)
+    if not symptoms:
+        print(f"No symptom IDs found for {symptom_names}.")  # Debugging
+        return []
+    print(f"Results under {symptom_names}: {symptoms}")
     placeholders = ', '.join(['%s'] * len(symptoms))
+    # placeholders = ", ".join(map(str, symptoms))
+    count_of_symptoms = len(symptoms)
     query = f"""
     WITH SymptomCombinations AS (
         -- Get individual co-occurring symptoms for each input symptom
@@ -155,7 +172,7 @@ def fetch_most_possible_combinations_for_given_symptoms(symptom_names):
             FROM VisitSymptom
             WHERE symptom_id IN ({placeholders})
             GROUP BY visit_id
-            HAVING COUNT(DISTINCT symptom_id) = %d  -- Ensure all input symptoms are present
+            HAVING COUNT(DISTINCT symptom_id) = %s  -- Ensure all input symptoms are present
         )
         GROUP BY vs3.symptom_id, vs4.symptom_id
     )
@@ -168,8 +185,17 @@ def fetch_most_possible_combinations_for_given_symptoms(symptom_names):
     ORDER BY total_frequency DESC;
     """
 
-    # Execute query
-    return execute_query(query, tuple(symptoms) + tuple(symptoms) + (len(symptoms),))
+    # Combine parameters for query execution
+    params = tuple(symptoms) + tuple(symptoms) + (count_of_symptoms,)
+    print(f"\nExecute query to find most possible co-occurring symptoms")
+    print(f"Params: {params}")  # Debugging
+
+    # Execute query with parameters
+    results = execute_query(query, params)
+    print(f"\nRaw Query Results: {results}")
+    if not results:
+        print("No results returned from the co-occurring symptoms query.")
+    return results
     # two tuple(symptoms) for base case and recursive case respectively
     # (len(symptoms),)) %d placeholder in the HAVING COUNT(DISTINCT symptom_id) = %d clause
 
@@ -185,14 +211,20 @@ def fetch_most_possible_disease_for_given_symptoms(symptom_names):
         FROM VisitSymptom
         WHERE symptom_id IN ({placeholders})
         GROUP BY visit_id
-        HAVING COUNT(DISTINCT symptom_id) = %d  -- All input symptoms must be present
+        HAVING COUNT(DISTINCT symptom_id) = %s  -- All input symptoms must be present
     ) matched_visits
     INNER JOIN Prescription p ON matched_visits.visit_id = p.visit_id
     INNER JOIN Disease d ON p.disease_id = d.disease_id
     GROUP BY d.disease_name
     ORDER BY total_frequency DESC;          
     """
-    return execute_query(query, tuple(symptoms) + (len(symptoms),))
+     # Combine symptom IDs with the count of symptoms as parameters
+    params = tuple(symptoms) + (len(symptoms),)
+    print(f"Executing Query:\n{query}")
+    print(f"Params: {params}")
+
+    # Execute query
+    return execute_query(query, params)
 
 def fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_names, disease_name):
     # Fetch relevant symptom IDs based on symptom names
@@ -233,7 +265,6 @@ def fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_names, d
     GROUP BY medicine_name
     ORDER BY total_frequency DESC;
     """
-
     # Execute the query with the appropriate parameters
     return execute_query(query, tuple(symptoms) + (disease_id,))
 

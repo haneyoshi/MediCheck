@@ -20,6 +20,7 @@ def add_new_record_to_Patient_instance(visit_id,patient: Patient):
 def find_most_frequent_co_occurring_symptoms(symptom_name_list):
     # retrieve corresponding symptom ids
     co_occurring_symptoms = ReadFormula.fetch_most_possible_combinations_for_given_symptoms(symptom_name_list)
+    print(f"Co-occurring Symptoms Data: {co_occurring_symptoms}")
     # return symptom instance object list
     return PipeLineObject.coocurring_symptom_instance(co_occurring_symptoms)
 

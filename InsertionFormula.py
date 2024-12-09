@@ -3,12 +3,14 @@ from DatabaseOperations import get_or_insert,execute_query
 # Insert patient and return patient_id
 # patient = (patient_id, first_name, last_name, date_of_birth)
 def insert_patient(patient):
-    patientFormula = """
-        INSERT INTO Patient(patient_id, first_name, last_name, date_of_birth)
-        VALUES (%s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE patient_id = LAST_INSERT_ID(patient_id)
-    """
-    return get_or_insert(patientFormula, patient)
+    table_name = "Patient"
+    additional_values = {
+        "patient_id": patient["patient_id"],
+        "first_name": patient["first_name"],
+        "last_name": patient["last_name"],
+        "date_of_birth": patient["date_of_birth"],
+    }
+    return get_or_insert(table_name, "patient_id", patient["patient_id"], additional_values)
 
 # Insert disease and return disease_id
 def insert_disease(disease_name):

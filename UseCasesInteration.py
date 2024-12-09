@@ -15,6 +15,7 @@ class Diagnosing:
             if symptom_input.lower() == 'done':
                 break
             self.reported_symptoms.append(symptom_input)
+            print(f"Reported Symptoms: {self.reported_symptoms}")
             suggested_symptoms = UseCasesAlgorithm.find_most_frequent_co_occurring_symptoms(self.reported_symptoms)
             print(f"\npossible co_occurring symptoms{suggested_symptoms}")
         print(f"\nSymptoms recorded: {self.reported_symptoms}")

@@ -1,5 +1,4 @@
 import UserRequest
-import PipeLineObject
 
 def main():
     print("Medicheck Symtem Starts")
@@ -21,3 +20,7 @@ def main():
             break
         else:
             print("Invalid command. Please try again.")
+
+# This ensures the script runs when executed directly
+if __name__ == "__main__":
+    main()

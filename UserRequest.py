@@ -24,12 +24,13 @@ def patient_check_in():
         try:
             patient = PipeLineObject.get_patient_profile(user_input)
             print(f"Patient retrieved: {patient}")
+            print("add the patient to queue\n")
             clinic_state.add_to_queue(patient)
             break
         except ValueError as e:
             print(e)
             print("Please try again or type 'new' to create a new patient.")
-            
+    print(f"add patient tp queue{clinic_state.in_queue}")
 
 def take_next_patient():
     patient = pateint_dequeue()
@@ -78,7 +79,7 @@ def create_new_patient():
             datetime.strptime(date_of_birth, "%Y-%m-%d")
 
             # Insert into database
-            patient_data = (patient_id, first_name, last_name, date_of_birth)
+            patient_data = {"patient_id": patient_id,"first_name": first_name,"last_name": last_name,"date_of_birth": date_of_birth,}
             InsertionFormula.insert_patient(patient_data)
 
             # Create and return patient object

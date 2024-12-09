@@ -10,7 +10,6 @@ connection_pool = pooling.MySQLConnectionPool(
   user="root",
   password="mySQL20!",
   database="MediDatabase"
-  # auth_plugin='mysql_native_password'
 )
 
 def connect_pool(instruction):
@@ -22,8 +21,15 @@ def connect_pool(instruction):
     tables = myCursor.fetchall()
     return tables
   finally:
-    myCursor.close()
+    try:
+        myCursor.fetchall()  # Clear unread results, if any
+    except mysql.connector.Error as e:
+        print(f"Error clearing results: {e}")
+    finally:
+        myCursor.close()
+        print("Cursor closed.")
     connect.close()
+    print("Connection closed.")
 
 
 def get_tables():
