@@ -1,4 +1,10 @@
 import UserRequest
+"""
+some sample input
+patient id: Z567890123
+symptoms: cough, fever
+diagnose: common cold
+"""
 
 def main():
     print("Medicheck Symtem Starts")
