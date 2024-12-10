@@ -12,4 +12,4 @@ class Medicine:
         return self.name == other.name
 
     def __repr__(self):
-        return f"Medicine(medicine_id={self.id},medicine_name={self.name})"
+        return f"medicine: {self.name}(id: {self.id})"

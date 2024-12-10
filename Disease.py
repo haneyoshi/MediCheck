@@ -11,4 +11,4 @@ class Disease:
         return self.name == other.name
 
     def __repr__(self):
-        return f"Disease(disease_id={self.id},disease_name={self.name})"
+        return f"disease: {self.name}(id: {self.id})"

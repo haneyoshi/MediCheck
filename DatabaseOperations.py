@@ -12,7 +12,7 @@ def execute_query(query, params=None):
         # Get a connection
         connection = get_connection()
         cursor = connection.cursor(buffered=True, dictionary=True)
-        print(f"Executing Query:\n{query} with Params: {params}")
+        print(f"Executing Query:\n{query} with Params: {params}") 
 
         # Execute the query
         if params:

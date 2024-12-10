@@ -1,6 +1,9 @@
 import UserRequest
 """
-some sample input
+**UI is under developing
+**introduction about this program is in README.md
+
+some sample input for testing
 patient id: Z567890123
 symptoms: cough, fever
 diagnose: common cold
