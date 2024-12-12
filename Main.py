@@ -2,11 +2,12 @@ import UserRequest
 from Main_app import MediCheckApp
 import tkinter as tk
 """
+**project demo is available on my portfolio: https://haneyoshi.github.io/
 **UI is under developing
 **introduction about this program is in README.md
 
 some sample input for testing
-patient id: Z567890123
+patient id: Z567890123 (Taiwanese id format)
 symptoms: cough, fever
 diagnose: common cold
 """
