@@ -27,9 +27,13 @@ class ClinicState:
     def add_to_queue(self, patient:Patient):
         self.in_queue.append(patient)
 
-    def pateint_dequeue(self) ->Patient:
+    def next_in_queue(self) ->Patient:
         # return the first value in list
         self.current_patient = self.in_queue.pop(0)
         print(f"current serving patient{self.current_patient}")
         self.patients_visit_today.append(self.current_patient)
         return self.current_patient
+    
+    def patient_dequeue(self):
+        patient = self.in_queue.pop(0)
+        print(f"patient leave: {patient}")

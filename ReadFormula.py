@@ -230,8 +230,10 @@ def fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_names, d
     # Fetch relevant symptom IDs based on symptom names
     symptoms = fetch_symptom_ids_by_names(symptom_names)
     disease_id = fetch_disease_id_by_name(disease_name)
-
-    symptom_placeholders = ', '.join(['%s'] * len(symptoms))
+    if not symptoms and not disease_id:
+        return []  # No symptoms or disease to process
+    
+    symptom_placeholders = ', '.join(['%s'] * len(symptoms)) if symptoms else 'NULL'
 
     # Define the query combining A (medicines for symptoms) and B (medicines for diseases)
     query = f"""
