@@ -1,5 +1,5 @@
 import mysql.connector
-from ConnectDatabase2 import get_connection
+from ConnectDatabase import get_connection
 
 # This function is used to handle data insertions, reads, updates, and deletions.
 def execute_query(query, params=None):

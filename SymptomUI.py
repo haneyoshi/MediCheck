@@ -20,9 +20,11 @@ def start_symptom_ui(app, patient):
     common_symptoms = UserRequest.get_common_symptoms()
     # Define a maximum line width
     max_width = 55
+
+    common_font = ("Arial", 12, "normal")
     # Wrap text into lines
     wrapped_symptoms = textwrap.fill(", ".join(common_symptoms), width=max_width)
-    tk.Label(symptom_window, text=f"Common Symptoms:\n{wrapped_symptoms}").pack(pady=10)
+    tk.Label(symptom_window, text=f"Common Symptoms:\n{wrapped_symptoms}", font=common_font).pack(pady=10)
 
     tk.Label(symptom_window, text="Enter Symptoms:").pack()
     symptom_entry = tk.Entry(symptom_window, width=50)
@@ -32,7 +34,7 @@ def start_symptom_ui(app, patient):
     symptom_list.pack(pady=10)
 
     # Create a label for suggested symptoms
-    suggestion_label = tk.Label(symptom_window, text="Suggested Symptoms: None", wraplength=600, justify="left")
+    suggestion_label = tk.Label(symptom_window, text="Suggested Symptoms: None", wraplength=600,font=common_font, justify="left")
     suggestion_label.pack(pady=5)
 
     user_entered_symptoms = []
@@ -45,7 +47,7 @@ def start_symptom_ui(app, patient):
                 suggested_symptoms = UserRequest.suggest_co_occurring_symptoms(user_entered_symptoms)
                 # Wrap suggestions for better readability
                 wrapped_suggestions = textwrap.fill(f"Suggested Symptoms: {', '.join(suggested_symptoms)}", width=60)
-                suggestion_label.config(text=wrapped_suggestions)
+                suggestion_label.config(text=wrapped_suggestions, font=common_font)
                 symptom_entry.delete(0, tk.END)
             except Exception as e:
                 app.log_text.insert(tk.END, f"Error saving Symptoms: {e}\n")

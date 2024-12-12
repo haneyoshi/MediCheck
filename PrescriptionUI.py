@@ -20,7 +20,7 @@ def start_prescription_ui(app, patient):
     max_width = 50
     # Wrap text into lines
     wrapped_medicines = textwrap.fill(", ".join(suggested_medicines), width=max_width)
-    tk.Label(prescription_window, text=f"Suggested Medicines:\n{wrapped_medicines}").pack(pady=10)
+    tk.Label(prescription_window, text=f"Suggested Medicines:\n{wrapped_medicines}",font=("Arial", 12, "normal")).pack(pady=10)
 
     tk.Label(prescription_window, text="Enter Prescriptions:").pack()
     prescription_entry = tk.Entry(prescription_window, width=50)

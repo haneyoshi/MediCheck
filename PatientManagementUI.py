@@ -17,7 +17,7 @@ def take_next_patient_ui(app):
     # Create a new window to display patient details
     next_patient_window = tk.Toplevel(app.root)
     next_patient_window.title("Next Patient")
-    next_patient_window.geometry("500x400")
+    next_patient_window.geometry("600x500")
 
     # Display patient details
     tk.Label(next_patient_window, text="Patient Details", font=("Arial", 14, "bold")).pack(pady=10)

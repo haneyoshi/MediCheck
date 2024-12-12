@@ -16,7 +16,7 @@ def start_diagnosis_ui(app, patient):
     tk.Label(diagnosis_window, text=f"Date of Birth: {patient.dBirth}").pack(pady=5)
 
     suggested_diseases = UserRequest.suggest_diagnosed_disease()
-    tk.Label(diagnosis_window, text=f"Suggested Diseases: {', '.join(suggested_diseases)}").pack(pady=10)
+    tk.Label(diagnosis_window, text=f"Suggested Diseases: {', '.join(suggested_diseases)}",font=("Arial", 12, "normal")).pack(pady=10)
 
     tk.Label(diagnosis_window, text="Enter Diagnosis:").pack()
     diagnosis_entry = tk.Entry(diagnosis_window, width=50)
