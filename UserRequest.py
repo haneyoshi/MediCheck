@@ -41,7 +41,6 @@ def take_next_patient():
     else:
         return patient, f"Processing Patient: {patient.fName} {patient.lName} (ID: {patient.id})"
 
-
 def suggest_co_occurring_symptoms(symptoms_list):
     """Suggest co-occurring symptoms based on the current input."""
     suggested_symptoms = UseCasesAlgorithm.find_most_frequent_co_occurring_symptoms(symptoms_list)
@@ -52,7 +51,6 @@ def confirm_symptoms(symptoms_list):
     """Confirm the reported symptoms for the current patient."""
     diagnosing.reported_symptoms.extend(symptoms_list)
     return diagnosing.reported_symptoms
-
 
 def suggest_diagnosed_disease():
     """Suggest potential diseases based on reported symptoms."""
@@ -96,9 +94,7 @@ def case_complete():
     # reset current diagnosing case
     diagnosing.case_reset()
     return f"Case complete:\n{patient} \n{summary}"
-    
 
-# ****************************
 def create_new_patient(patient_data):
     try:
         # Extract data and validate
@@ -156,6 +152,13 @@ def get_common_symptoms():
     return common_symptom_names
 
 # some additional function:
-# def patient_leaves_queue(patient_id):
-# def check_current_queue():
+def patient_leaves_queue(patient_id):
+    for p in clinic_state.in_queue:
+        if  p.id == patient_id:
+            clinic_state.in_queue.remove(p)
+        else:
+            print(f"no patient found for id: {patient_id}")
+
+def check_current_queue():
+    
 # def check_today_visits():
