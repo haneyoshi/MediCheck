@@ -26,7 +26,7 @@ def insert_symptom(symptom_name):
 
 # Insert visit and return visit_id
 def insert_visit(patient_id):
-    visitFormula = "INSERT INTO Visit(patient_id) VALUES(%s,%s)"
+    visitFormula = "INSERT INTO Visit(patient_id) VALUES(%s)"
     return execute_query(visitFormula, (patient_id,))
 
 # Insert prescription and link it to the visit and disease

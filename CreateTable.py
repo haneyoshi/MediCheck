@@ -27,7 +27,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS Visit (
             visit_id INT AUTO_INCREMENT PRIMARY KEY,
             patient_id VARCHAR(10),
-            visit_date DATETIME,
+            visit_date DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (patient_id) REFERENCES Patient(patient_id)
         );
         """,

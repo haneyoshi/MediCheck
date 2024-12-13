@@ -1,6 +1,7 @@
 import UserRequest
 import tkinter as tk
 import textwrap
+from SummaryUI import show_summary_ui
 
 def start_prescription_ui(app, patient):
     """Start the prescription entry UI."""
@@ -50,6 +51,7 @@ def start_prescription_ui(app, patient):
         UserRequest.confirm_medicines(user_entered_medicines)
         app.log_text.insert(tk.END, "Prescription saved successfully.\n")
         prescription_window.destroy()
+        show_summary_ui(app)
 
     tk.Button(prescription_window, text="Add Prescription", command=add_prescription).pack(pady=5)
     tk.Button(prescription_window, text="Save Prescription", command=save_prescription).pack(pady=10)

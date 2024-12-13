@@ -7,7 +7,7 @@ class Diagnosing:
         self.prescribed_medicines = []
     
     def diagnose_summary(self):
-        print(f"\n\nSummary for this patient:\nSymptoms: {self.reported_symptoms}\nDiagnosis: {self.diagnosed_disease}\nMedicines: {self.prescribed_medicines}")
+        return (f"\n\nSummary for this patient:\nSymptoms: {self.reported_symptoms}\nDiagnosis: {self.diagnosed_disease}\nMedicines: {self.prescribed_medicines}")
 
     def case_reset(self):
         self.reported_symptoms = []

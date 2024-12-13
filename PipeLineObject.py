@@ -14,51 +14,50 @@ def get_patient_profile(patient_id):
     patient_data = patient_data[0]  # Extract the first (and only) result
     print(f"fetch patient's data under id {patient_id}:{patient_data}")
 
-     # Fetch visits
+    # Create patient object
+    patient = Patient(patient_id=patient_data["patient_id"],first_name=patient_data["first_name"],last_name=patient_data["last_name"],date_of_birth=patient_data["date_of_birth"])
+
+    # Fetch visits
     visit_data = ReadFormula.fetch_visits_by_patient_id(patient_id)
     print(f"\nFetch patient's visit data: {visit_data}")
-    if not visit_data:
-        raise ValueError(f"No visit recprd found under patient id:{patient_id}")
-    visits= []
-    for v in visit_data:
-        visit_id = v['visit_id']  # Access dictionary keys explicitly
-        visit_date = v['visit_date']
-        print(f"\nProcessing Visit ID: {v['visit_id']}, Visit Date: {v['visit_date']}")
+    if visit_data:
+        visits= []
+        for v in visit_data:
+            visit_id = v['visit_id']  # Access dictionary keys explicitly
+            visit_date = v['visit_date']
+            print(f"\nProcessing Visit ID: {v['visit_id']}, Visit Date: {v['visit_date']}")
 
-        # Fetch symptoms
-        symptom_data = ReadFormula.fetch_symptoms_by_visit_id(int(visit_id))
-        print(f"\nUnder visit id {v['visit_id']}: {symptom_data}")
-        symptoms = [Symptom(**symptom) for symptom in symptom_data]
+            # Fetch symptoms
+            symptom_data = ReadFormula.fetch_symptoms_by_visit_id(int(visit_id))
+            print(f"\nUnder visit id {v['visit_id']}: {symptom_data}")
+            symptoms = [Symptom(**symptom) for symptom in symptom_data]
 
-        # Fetch prescriptions
-        prescription_data = ReadFormula.fetch_prescriptions_by_visit_id(visit_id)
-        if not prescription_data:
-            raise ValueError(f"No prescription found for visit ID: {visit_id}")
-        print(f"\nPrescriptions for Visit ID {visit_id}: {prescription_data}")
-        # "***_data" is a list type return from query execution
-        prescription_id = prescription_data[0]["prescription_id"]
-        
-        # Fetch diseases
-        disease_data = ReadFormula.fetch_disease_by_prescription_id(prescription_id)
-        if not disease_data:
-            raise ValueError(f"No disease found for prescription ID: {prescription_id}")
-        print(f"\nDisease Data: {disease_data}")
-        disease = Disease(disease_id=disease_data[0]["disease_id"], disease_name = disease_data[0]["disease_name"])
+            # Fetch prescriptions
+            prescription_data = ReadFormula.fetch_prescriptions_by_visit_id(visit_id)
+            if not prescription_data:
+                raise ValueError(f"No prescription found for visit ID: {visit_id}")
+            print(f"\nPrescriptions for Visit ID {visit_id}: {prescription_data}")
+            # "***_data" is a list type return from query execution
+            prescription_id = prescription_data[0]["prescription_id"]
+            
+            # Fetch diseases
+            disease_data = ReadFormula.fetch_disease_by_prescription_id(prescription_id)
+            if not disease_data:
+                raise ValueError(f"No disease found for prescription ID: {prescription_id}")
+            print(f"\nDisease Data: {disease_data}")
+            disease = Disease(disease_id=disease_data[0]["disease_id"], disease_name = disease_data[0]["disease_name"])
 
-        # Fetch medicines
-        medicine_data = ReadFormula.fetch_medicines_by_prescription_id(prescription_id)
-        print(f"\nFetch prescribed medicine under P_id {prescription_id}: {medicine_data}")
-        medicines = [Medicine(**medicine) for medicine in medicine_data]
+            # Fetch medicines
+            medicine_data = ReadFormula.fetch_medicines_by_prescription_id(prescription_id)
+            print(f"\nFetch prescribed medicine under P_id {prescription_id}: {medicine_data}")
+            medicines = [Medicine(**medicine) for medicine in medicine_data]
 
-        # Create visit record
-        visit = VisitRecord(date=visit_date,visit_id=visit_id,diagnosed_disease=disease)
-        visit.prescribed_medicines = medicines
-        visit.reported_symptoms = symptoms
-        visits.append(visit)
-
-    # Create patient object
-    patient = Patient(patient_id=patient_data["patient_id"],first_name=patient_data["first_name"],last_name=patient_data["last_name"],date_of_birth=patient_data["date_of_birth"],history=visits)
-
+            # Create visit record
+            visit = VisitRecord(date=visit_date,visit_id=visit_id,diagnosed_disease=disease)
+            visit.prescribed_medicines = medicines
+            visit.reported_symptoms = symptoms
+            visits.append(visit)
+            patient.records=visits
     return patient
 
 def add_Patient_visit_to_instance(visit_id, patient:Patient):

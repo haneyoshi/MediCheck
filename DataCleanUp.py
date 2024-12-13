@@ -78,7 +78,7 @@ def delete_related_data_for_visit(visit_id):
 
                 if prescribed_medicines:
                     for pm in prescribed_medicines:
-                        DeletionFormula.delete_prescribedMedicine(prescription_id, pm['medicine_id'])
+                        DeletionFormula.delete_prescribedMedicine(pm['medicine_id'])
 
                 # Delete the prescription itself
                 DeletionFormula.delete_prescription(prescription_id)
@@ -94,11 +94,11 @@ def delete_related_data_for_visit(visit_id):
 # Usage examples
 def main():
     # Scenario 1: Delete all data related to a random patient
-    test_patient_id = 'P001'
-    delete_related_data_for_patient(test_patient_id)
+    # test_patient_id = 'P001'
+    # delete_related_data_for_patient(test_patient_id)
 
     # Scenario 2: Delete all data related to a specific visit
-    test_visit_id = 1  # Replace with an actual visit ID
+    test_visit_id = 301  # Replace with an actual visit ID
     delete_related_data_for_visit(test_visit_id)
 
 if __name__ == "__main__":

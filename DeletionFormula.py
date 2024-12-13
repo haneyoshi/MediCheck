@@ -32,5 +32,5 @@ def delete_visitSymptom(visit_symptom_id):
     return execute_query(visitSymptomFormula, (visit_symptom_id,))
 
 def delete_prescribedMedicine(prescribed_medicine_id):
-    prescribedMedicineFormula = "DELETE FROM PrescribedMedicine WHERE prescription_id = %s AND medicine_id = %s"
+    prescribedMedicineFormula = "DELETE FROM PrescribedMedicine WHERE medicine_id = %s"
     return execute_query(prescribedMedicineFormula, (prescribed_medicine_id,))

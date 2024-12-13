@@ -82,7 +82,7 @@ def confirm_medicines(medicine_list):
     diagnosing.prescribed_medicines.extend(medicine_list)
 
 def display_summary():
-    diagnosing.diagnose_summary()
+    return diagnosing.diagnose_summary()
 
 def case_complete():
     symptoms = diagnosing.reported_symptoms
@@ -91,6 +91,7 @@ def case_complete():
     patient = clinic_state.current_patient
     UseCasesAlgorithm.patient_case_complete(patient, symptoms, diesease, medicines)
     summary = display_summary()
+    clinic_state.case_done()
     # reset current diagnosing case
     diagnosing.case_reset()
     return f"Case complete:\n{patient} \n{summary}"
@@ -151,14 +152,18 @@ def get_common_symptoms():
     common_symptom_names = [symptom.name for symptom in clinic_state.recent_top_common_symptoms]
     return common_symptom_names
 
-# some additional function:
 def patient_leaves_queue(patient_id):
-    for p in clinic_state.in_queue:
-        if  p.id == patient_id:
+    """Remove a patient from the queue based on their ID."""
+    for p in clinic_state.in_queue[:]:  # Iterate over a copy of the list
+        if p.id == patient_id:
             clinic_state.in_queue.remove(p)
-        else:
-            print(f"no patient found for id: {patient_id}")
+            return f"Patient with ID {patient_id} has been removed from the queue."
+    return f"No patient found for ID: {patient_id}"
 
 def check_current_queue():
-    
-# def check_today_visits():
+    patient_in_queue_names = [ f"{patient.fName} {patient.lName}: {patient.id}\n" for patient in clinic_state.in_queue]
+    return patient_in_queue_names
+
+def check_today_visits():
+    clinic_visit_history = [ f"{patient.fName} {patient.lName}: {patient.id}\n" for patient in clinic_state.patients_visit_today]
+    return clinic_visit_history

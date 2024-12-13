@@ -13,20 +13,20 @@ def patient_check_in(app):
         # Open a new window for registering a new patient
         new_window = tk.Toplevel(app.root)
         new_window.title("Register New Patient")
-
-        tk.Label(new_window, text="Patient ID:").grid(row=0, column=0, padx=10, pady=5)
+        font_size = 10
+        tk.Label(new_window, text="Patient ID:",font=font_size).grid(row=0, column=0, padx=10, pady=5)
         patient_id_entry = tk.Entry(new_window)
         patient_id_entry.grid(row=0, column=1, padx=10, pady=5)
 
-        tk.Label(new_window, text="First Name:").grid(row=1, column=0, padx=10, pady=5)
+        tk.Label(new_window, text="First Name:",font=font_size).grid(row=1, column=0, padx=10, pady=5)
         first_name_entry = tk.Entry(new_window)
         first_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
-        tk.Label(new_window, text="Last Name:").grid(row=2, column=0, padx=10, pady=5)
+        tk.Label(new_window, text="Last Name:",font=font_size).grid(row=2, column=0, padx=10, pady=5)
         last_name_entry = tk.Entry(new_window)
         last_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
-        tk.Label(new_window, text="Date of Birth (YYYY-MM-DD):").grid(row=3, column=0, padx=10, pady=5)
+        tk.Label(new_window, text="Date of Birth (YYYY-MM-DD):",font=font_size).grid(row=3, column=0, padx=10, pady=5)
         dob_entry = tk.Entry(new_window)
         dob_entry.grid(row=3, column=1, padx=10, pady=5)
 
@@ -60,3 +60,4 @@ def patient_check_in(app):
         if "Error" not in log:
             # Clear the patient ID entry after successful check-in
             app.patient_id_entry.delete(0, tk.END)
+            # Update the queue display

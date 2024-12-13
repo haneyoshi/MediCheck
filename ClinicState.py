@@ -21,19 +21,18 @@ class ClinicState:
     def set_current_patient(self, patient):
         self.current_patient = patient
 
-    # def document_patient_visit(self):
-    #     self.current_patient = self.pateint_dequeue()
-
     def add_to_queue(self, patient:Patient):
         self.in_queue.append(patient)
 
     def next_in_queue(self) ->Patient:
         # return the first value in list
-        self.current_patient = self.in_queue.pop(0)
+        self.current_patient = self.in_queue[0]
         print(f"current serving patient{self.current_patient}")
-        self.patients_visit_today.append(self.current_patient)
         return self.current_patient
     
-    def patient_dequeue(self):
-        patient = self.in_queue.pop(0)
-        print(f"patient leave: {patient}")
+    def case_done(self) -> Patient:
+        first_in_line_served = self.in_queue.pop(0)
+        if not first_in_line_served:
+            return f"No patients in the queue."
+        else:
+            self.patients_visit_today.append(first_in_line_served)
