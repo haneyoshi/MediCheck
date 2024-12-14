@@ -18,8 +18,7 @@ def fetch_visits_by_patient_id(patient_id):
 # Fetch a specific visit
 def fetch_visit_by_id(visit_id):
     query = "SELECT visit_id, patient_id, visit_date FROM Visit WHERE visit_id = %s"
-    result = execute_query(query, (visit_id,))
-    return result[0] if result else None
+    return execute_query(query, (visit_id,))
 
 # Fetch all symptoms
 def fetch_all_symptoms():
@@ -48,18 +47,14 @@ def fetch_all_diseases():
 
 # Fetch prescriptions for a specific visit
 def fetch_prescriptions_by_visit_id(visit_id):
-    query = "SELECT prescription_id FROM Prescription WHERE visit_id = %s"
+    query = "SELECT prescription_id, disease_id FROM Prescription WHERE visit_id = %s"
     return  execute_query(query, (visit_id,))
 
 # fetch diagnosed disease fpr a specifi presciption
-def fetch_disease_by_prescription_id(prescription_id):
-    print(f"\nFetching disease for prescription ID: {prescription_id}")
-    query = """SELECT Disease.disease_id, Disease.disease_name
-        FROM Prescription
-        INNER JOIN Disease ON Prescription.disease_id = Disease.disease_id
-        WHERE Prescription.prescription_id = %s
-        """
-    return execute_query(query,(prescription_id,))
+def fetch_disease_by_id(disease_id):
+    print(f"\nFetching disease_name by id : {disease_id}")
+    query = "SELECT Disease.disease_name FROM Disease WHERE disease_id = %s"
+    return execute_query(query,(disease_id,))
 
 # Fetch medicines for a specific prescription
 def fetch_medicines_by_prescription_id(prescription_id):

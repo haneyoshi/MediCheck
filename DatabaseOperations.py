@@ -16,14 +16,13 @@ def execute_query(query, params=None):
 
         # Execute the query
         if params:
-            print("Executing query with parameters.")
             cursor.execute(query, params)
         else:
             cursor.execute(query)
 
         # If the query is a SELECT, fetch results
         if query.strip().upper().startswith("SELECT") or "WITH" in query.strip().upper():
-            print("Fetching results for SELECT query.")
+            print("*** Fetching results for SELECT query.")
             results = cursor.fetchall()
             print(f"\nQuery Results: {results}")
             return results
@@ -31,6 +30,7 @@ def execute_query(query, params=None):
         # Commit for non-SELECT queries
         connection.commit()
         if query.strip().upper().startswith("INSERT"):
+            print("*** Fetching results for INSERT query.")
             return cursor.lastrowid
         else:
             return cursor.rowcount
@@ -61,6 +61,7 @@ def get_or_insert(table_name, column_name, value, additional_values=None):
     check_formula = f"SELECT {column_name}_id FROM {table_name} WHERE {column_name}_name = %s"
     result = execute_query(check_formula, (value,))
     if result:
+        print(f"*** check given input ({value}) exists: {result}\n")
         return result[0][f"{column_name}_id"]
 
     # Step 2: Insert if it doesn't exist

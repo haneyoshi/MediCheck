@@ -55,8 +55,11 @@ def confirm_symptoms(symptoms_list):
 def suggest_diagnosed_disease():
     """Suggest potential diseases based on reported symptoms."""
     if not diagnosing.reported_symptoms:
+        print(f"*** no reported_symptoms stored\n")
         return []
     suggested_disease = UseCasesAlgorithm.find_most_possible_disease(diagnosing.reported_symptoms)
+    if not suggested_disease:
+        raise ValueError(f"can't find relevant diseases to suggest")
     suggested_disease_names = [disease["disease_name"] for disease in suggested_disease]
     return suggested_disease_names
 
@@ -89,6 +92,7 @@ def case_complete():
     diesease = diagnosing.diagnosed_disease
     medicines = diagnosing.prescribed_medicines
     patient = clinic_state.current_patient
+    print(f"*** UserRequest, case_complete, check key elements:\nsymptoms:{symptoms}, disease: {diesease}, medicine: {medicines}, patient.id: {patient}")
     UseCasesAlgorithm.patient_case_complete(patient, symptoms, diesease, medicines)
     summary = display_summary()
     clinic_state.case_done()

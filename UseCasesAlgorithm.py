@@ -6,21 +6,21 @@ import PipeLineObject
 
 def patient_case_complete(patient: Patient, symptoms, disease, medicines):
     visit_id = InsertionFormula.insert_visit(patient.id)
+    print(f"*** completing case,patient id: {patient.id}, create visit id: {visit_id}\n")
     for s in symptoms:
         InsertionFormula.insert_visitSymptom(visit_id,s)
     prescription_id = InsertionFormula.insert_prescription(visit_id,disease)
     for m in medicines:
         InsertionFormula.insert_prescribedMedicine(prescription_id,m)
-    patient = PipeLineObject.get_patient_profile(patient.id)
-    print(f"patient's visit record achive{patient}")
-    add_new_record_to_Patient_instance(visit_id,patient)
-
-def add_new_record_to_Patient_instance(visit_id,patient: Patient):
-    if not visit_id or not patient:
-        raise ValueError("visit_id:{visit_id}, patient: {patient}")
-    #  store new record to local patient instance
     PipeLineObject.add_Patient_visit_to_instance(visit_id,patient)
-    print(f"fetch local instance{patient}")
+    print(f"check new visit added to patient{patient}")
+
+# def add_new_record_to_Patient_instance(visit_id,patient: Patient):
+#     if not visit_id or not patient:
+#         raise ValueError("visit_id:{visit_id}, patient: {patient}")
+#     #  store new record to local patient instance
+#     PipeLineObject.add_Patient_visit_to_instance(visit_id,patient)
+#     print(f"check new visit added to patient{patient}")
 
 def find_most_frequent_co_occurring_symptoms(symptom_name_list):
     # retrieve corresponding symptom ids
