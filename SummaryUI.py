@@ -9,10 +9,14 @@ def show_summary_ui(app):
 
     # Fetch the diagnosis summary from the backend
     summary = UserRequest.case_complete()
+    if summary is None:
+        print("Error: Summary is None.")
 
     # Display the summary text
     tk.Label(summary_window, text="Diagnosis Summary", font=("Arial", 14, "bold")).pack(pady=10)
     summary_text_box = tk.Text(summary_window, height=20, width=60, wrap="word", font=("Arial", 10))
+    if not isinstance(summary_text_box, tk.Text):
+        print("Error: summary_text_box is not a Text widget.")
     summary_text_box.insert("1.0", summary)
     summary_text_box.config(state="disabled")  # Make text box read-only
     summary_text_box.pack(pady=10)

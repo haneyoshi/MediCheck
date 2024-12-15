@@ -98,7 +98,7 @@ def main():
     # delete_related_data_for_patient(test_patient_id)
 
     # Scenario 2: Delete all data related to a specific visit
-    test_visit_id = 308  # Replace with an actual visit ID
+    test_visit_id = 312  # Replace with an actual visit ID
     delete_related_data_for_visit(test_visit_id)
 
 if __name__ == "__main__":

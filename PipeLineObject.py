@@ -66,7 +66,7 @@ def get_patient_profile(patient_id):
             visits.append(visit)
             patient.records=visits
     else:
-        raise ValueError(f"no visit record found for patient id {patient_id}")
+        print("no visit record for this patient")
     return patient
 
 def add_Patient_visit_to_instance(visit_id, patient:Patient):

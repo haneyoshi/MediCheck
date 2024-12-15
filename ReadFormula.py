@@ -201,26 +201,31 @@ def fetch_most_possible_disease_for_given_symptoms(symptom_names):
     symptoms = fetch_symptom_ids_by_names(symptom_names)
     placeholders = ', '.join(['%s'] * len(symptoms))
     query = f"""
-    SELECT d.disease_name, COUNT(*) AS total_frequency
-    FROM (
+    SELECT d.disease_name, 
+        COUNT(DISTINCT vs.symptom_id) AS matched_symptoms_count,
+        COUNT(*) AS total_frequency,
+        COUNT(DISTINCT vs.symptom_id) / %s AS relevance_score
+    FROM VisitSymptom vs
+    INNER JOIN (
         SELECT visit_id
         FROM VisitSymptom
         WHERE symptom_id IN ({placeholders})
         GROUP BY visit_id
-        HAVING COUNT(DISTINCT symptom_id) = %s  -- All input symptoms must be present
-    ) matched_visits
+    ) matched_visits ON vs.visit_id = matched_visits.visit_id
     INNER JOIN Prescription p ON matched_visits.visit_id = p.visit_id
     INNER JOIN Disease d ON p.disease_id = d.disease_id
     GROUP BY d.disease_name
-    ORDER BY total_frequency DESC;          
+    ORDER BY relevance_score DESC, total_frequency DESC;
     """
      # Combine symptom IDs with the count of symptoms as parameters
     params = tuple(symptoms) + (len(symptoms),)
     print(f"Executing Query:\n{query}")
     print(f"Params: {params}")
-
     # Execute query
-    return execute_query(query, params)
+    results = execute_query(query, params)
+    if not results:
+        return [{"disease_name": "No relevant disease found"}]
+    return results
 
 def fetch_most_relevant_medicine_for_given_symptoms_and_disease(symptom_names, disease_name):
     # Fetch relevant symptom IDs based on symptom names
