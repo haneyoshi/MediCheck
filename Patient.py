@@ -19,4 +19,7 @@ class Patient:
         return self.id == other.id
 
     def __repr__(self):
-        return f"Patient(patient id: '{self.id}', first name: '{self.fName}', last name: '{self.lName}', birth date: '{self.dBirth}\nvisit records:\n{self.records}')"
+        output = f"A Patient\npatient id: '{self.id}', first name: '{self.fName}', last name: '{self.lName}', birth date: '{self.dBirth}\nVisit History:"
+        for r in self.records:
+            output = output+repr(r)+"\n"
+        return output

@@ -50,4 +50,4 @@ class VisitRecord:
         return self.date == other.date
 
     def __repr__(self):
-        return f"Record(date: {self.date}, diagnose: {self.diagnosed_disease}, symptoms: {self.reported_symptoms}, medicines: {self.prescribed_medicines})"
+        return f"Visit on: {self.date}, id: {self.visit_id}\nDiagnose: {self.diagnosed_disease}\nSymptoms: {self.reported_symptoms}\nMedicines: {self.prescribed_medicines})"
