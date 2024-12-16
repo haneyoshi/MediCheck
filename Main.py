@@ -1,5 +1,5 @@
 import UserRequest
-from Main_app import MediCheckApp
+from Main_app2 import MediCheckApp
 import tkinter as tk
 """
 **project demo is available on my portfolio: https://haneyoshi.github.io/

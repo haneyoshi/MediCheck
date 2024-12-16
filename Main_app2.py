@@ -24,47 +24,51 @@ class MediCheckApp:
             "2) Click Next Patient to start taking the next patient from the queue and document diagnosis.\n"
             "3) Click Exit to leave the program.\n"
         )
-        self.instructions_label = tk.Label(root, text=self.instruction_text, justify="left", wraplength=750)
+        self.instructions_label = tk.Label(root, text=self.instruction_text, wraplength=750)
         self.instructions_label.pack(pady=10)
 
-        # Patient ID Entry
-        self.patient_id_label = tk.Label(root, text="Patient ID:")
-        self.patient_id_label.pack()
-        self.patient_id_entry = tk.Entry(root, width=30)
-        self.patient_id_entry.pack(pady=5)
-
         BUTTON_WIDTH = 25
-        # Check In Button
-        self.check_in_button = tk.Button(root, text="Check In Patient", width=BUTTON_WIDTH, command=lambda: patient_check_in(self))
-        self.check_in_button.pack(pady=5)
 
-        # Remove Patient Section
-        self.remove_patient_label = tk.Label(root, text="Enter Patient ID to Remove:")
-        self.remove_patient_label.pack()
-        self.remove_patient_entry = tk.Entry(root, width=BUTTON_WIDTH)
-        self.remove_patient_entry.pack(pady=5)
-        self.remove_patient_button = tk.Button(root, text="Remove Patient", width=BUTTON_WIDTH, command=self.remove_patient_from_queue)
-        self.remove_patient_button.pack(pady=5)
+        # Centered Frame for Entry Box and Label
+        center_frame = tk.Frame(root)
+        center_frame.pack(pady=20)
 
-        # Take Next Patient Button
-        self.next_patient_button = tk.Button(root, text="Take Next Patient", width=BUTTON_WIDTH, command=lambda: take_next_patient_ui(self))
-        self.next_patient_button.pack(pady=5)
-        
-        # Check Patients in Queue Button
-        self.queue_button = tk.Button(root, text="Check Patients in Queue", width=BUTTON_WIDTH, command=lambda: show_queue_window(self))
-        self.queue_button.pack(pady=5)
+        # Patient ID Label
+        self.patient_id_label = tk.Label(center_frame, text="Patient ID", font=("Arial", 14))
+        self.patient_id_label.pack(pady=5)
 
-        # Check Today's Visits Button
-        self.visits_button = tk.Button(root, text="Check Today's Visits", width=BUTTON_WIDTH, command=lambda: show_visits_window(self))
-        self.visits_button.pack(pady=5)
+        # Single Entry Box
+        self.patient_id_entry = tk.Entry(center_frame, width=40, font=("Arial", 12))
+        self.patient_id_entry.pack(pady=10)
 
-        # Retrieve Patient Profile Button
-        self.retrieve_profile_button = tk.Button(root, text="Retrieve Patient Profile", width=BUTTON_WIDTH, command=self.retrieve_patient_profile)
-        self.retrieve_profile_button.pack(pady=5)
+        # Buttons Frame
+        buttons_frame = tk.Frame(root)
+        buttons_frame.pack(pady=10)
 
-        # Exit Button
-        self.exit_button = tk.Button(root, text="Exit System", width=BUTTON_WIDTH, command=self.exit_system)
-        self.exit_button.pack(pady=5)
+        # Row 1: Check In and Remove Patient
+        self.check_in_button = tk.Button(buttons_frame, text="Check In Patient", width=BUTTON_WIDTH, command=lambda: patient_check_in(self))
+        self.check_in_button.grid(row=0, column=0, padx=10, pady=5)
+
+        self.remove_patient_button = tk.Button(buttons_frame, text="Remove Patient", width=BUTTON_WIDTH, command=self.remove_patient_from_queue)
+        self.remove_patient_button.grid(row=0, column=1, padx=10, pady=5)
+
+        # Row 2: Check Patients in Queue and Take Next Patient
+        self.queue_button = tk.Button(buttons_frame, text="Check Patients in Queue", width=BUTTON_WIDTH, command=lambda: show_queue_window(self))
+        self.queue_button.grid(row=1, column=0, padx=10, pady=5)
+
+        self.next_patient_button = tk.Button(buttons_frame, text="Take Next Patient", width=BUTTON_WIDTH, command=lambda: take_next_patient_ui(self))
+        self.next_patient_button.grid(row=1, column=1, padx=10, pady=5)
+
+        # Row 3: Check Today's Visits and Retrieve Patient Profile
+        self.visits_button = tk.Button(buttons_frame, text="Check Today's Visits", width=BUTTON_WIDTH, command=lambda: show_visits_window(self))
+        self.visits_button.grid(row=2, column=0, padx=10, pady=5)
+
+        self.retrieve_profile_button = tk.Button(buttons_frame, text="Retrieve Patient Profile", width=BUTTON_WIDTH, command=self.retrieve_patient_profile)
+        self.retrieve_profile_button.grid(row=2, column=1, padx=10, pady=5)
+
+        # Row 4: Exit System
+        self.exit_button = tk.Button(buttons_frame, text="Exit System", width=BUTTON_WIDTH, command=self.exit_system)
+        self.exit_button.grid(row=3, column=0, columnspan=2, pady=10)
 
         # Status Label
         self.status_label = tk.Label(root, text="Welcome to MediCheck!", fg="green")
@@ -79,11 +83,11 @@ class MediCheckApp:
 
     def remove_patient_from_queue(self):
         """Handle removing a patient from the queue."""
-        patient_id = self.remove_patient_entry.get().strip()
+        patient_id = self.patient_id_entry.get().strip()
         if patient_id:
             result = UserRequest.patient_leaves_queue(patient_id)
             self.log_text.insert(tk.END, f"{result}\n")
-            self.remove_patient_entry.delete(0, tk.END)
+            self.patient_id_entry.delete(0, tk.END)
         else:
             self.log_text.insert(tk.END, "Error: Patient ID cannot be empty.\n")
 
@@ -116,7 +120,7 @@ class MediCheckApp:
     def exit_system(self):
         """Exit the application."""
         self.root.destroy()
-    
+
     def complete_patient_diagnose(self):
         msg = UserRequest.case_complete()
         self.log_text.insert(tk.END, f"{msg}\n")
