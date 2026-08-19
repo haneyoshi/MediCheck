@@ -22,17 +22,26 @@ class ClinicState:
         self.current_patient = patient
 
     def add_to_queue(self, patient:Patient):
+        patient.id = str(patient.id).strip().upper()
+        if any(str(queued.id).strip().upper() == patient.id for queued in self.in_queue):
+            return False
         self.in_queue.append(patient)
+        return True
 
     def next_in_queue(self) ->Patient:
         # return the first value in list
+        if not self.in_queue:
+            self.current_patient = None
+            return None
         self.current_patient = self.in_queue[0]
         print(f"current serving patient{self.current_patient}")
         return self.current_patient
     
     def case_done(self) -> Patient:
+        if not self.in_queue:
+            self.current_patient = None
+            return None
         first_in_line_served = self.in_queue.pop(0)
-        if not first_in_line_served:
-            return f"No patients in the queue."
-        else:
-            self.patients_visit_today.append(first_in_line_served)
+        self.patients_visit_today.append(first_in_line_served)
+        self.current_patient = None
+        return first_in_line_served

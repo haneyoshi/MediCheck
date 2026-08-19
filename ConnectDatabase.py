@@ -1,11 +1,14 @@
+import os
+
 import mysql.connector
 
 # Configuration for database connection
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "mySQL20!",
-    "database": "MediDatabase",
+    "host": os.getenv("MEDICHECK_DB_HOST", "localhost"),
+    "port": int(os.getenv("MEDICHECK_DB_PORT", "3306")),
+    "user": os.getenv("MEDICHECK_DB_USER", "root"),
+    "password": os.getenv("MEDICHECK_DB_PASSWORD", ""),
+    "database": os.getenv("MEDICHECK_DB_NAME", "MediDatabase"),
 }
 
 def get_connection():

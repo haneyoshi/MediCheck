@@ -1,15 +1,6 @@
 import mysql.connector
 from mysql.connector import pooling
-
-# Connection pool setup
-connection_pool = pooling.MySQLConnectionPool(
-    pool_name="clinic_pool",
-    pool_size=5,
-    host="localhost",
-    user="root",
-    password="mySQL20!",
-    database="MediDatabase"
-)
+from ConnectDatabase import DB_CONFIG
 
 def create_tables():
     # SQL Statements for creating tables
@@ -81,7 +72,12 @@ def create_tables():
     ]
 
     # Execute the statements
+    connection = None
+    cursor = None
     try:
+        connection_pool = pooling.MySQLConnectionPool(
+            pool_name="clinic_pool", pool_size=5, **DB_CONFIG
+        )
         # Get a connection from the pool
         connection = connection_pool.get_connection()
         cursor = connection.cursor()
@@ -97,10 +93,11 @@ def create_tables():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
     finally:
-        if connection.is_connected():
+        if cursor:
             cursor.close()
+        if connection and connection.is_connected():
             connection.close()
             print("Connection closed.")
 
-# Call the function to create tables
-create_tables()
+if __name__ == "__main__":
+    create_tables()

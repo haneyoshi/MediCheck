@@ -5,14 +5,16 @@ import ReadFormula
 import PipeLineObject
 
 def patient_case_complete(patient: Patient, symptoms, disease, medicines):
-    visit_id = InsertionFormula.insert_visit(patient.id)
+    visit_id = InsertionFormula.insert_complete_consultation(
+        patient.id, symptoms, disease, medicines
+    )
     print(f"*** completing case,patient id: {patient.id}, create visit id: {visit_id}\n")
-    for s in symptoms:
-        InsertionFormula.insert_visitSymptom(visit_id,s)
-    prescription_id = InsertionFormula.insert_prescription(visit_id,disease)
-    for m in medicines:
-        InsertionFormula.insert_prescribedMedicine(prescription_id,m)
-    PipeLineObject.add_Patient_visit_to_instance(visit_id,patient)
+    try:
+        PipeLineObject.add_Patient_visit_to_instance(visit_id, patient)
+    except Exception as error:
+        # The clinical transaction is already durable. A profile refresh can
+        # recover this optional in-memory history if its follow-up read fails.
+        print(f"Visit saved, but the patient instance could not be refreshed: {error}")
     print(f"check new visit added to patient{patient}")
 
 # def add_new_record_to_Patient_instance(visit_id,patient: Patient):

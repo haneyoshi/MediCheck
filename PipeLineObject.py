@@ -47,12 +47,12 @@ def get_patient_profile(patient_id):
             # Fetch diseases
             # disease_data = ReadFormula.fetch_disease_by_prescription_id(prescription_id)
             # if not disease_data:
-            diease_name = ReadFormula.fetch_disease_by_id(disease_id)
-            if not diease_name:
-                raise ValueError(f"no diease_name found for id: {disease_id}")
+            disease_name = ReadFormula.fetch_disease_by_id(disease_id)
+            if not disease_name:
+                raise ValueError(f"No disease name found for ID: {disease_id}")
             #     raise ValueError(f"No disease found for prescription ID: {prescription_id}")
             # print(f"\nDisease Data: {disease_data}")
-            disease = Disease(disease_id=disease_id, disease_name = diease_name)
+            disease = Disease(disease_id=disease_id, disease_name=disease_name)
 
             # Fetch medicines
             medicine_data = ReadFormula.fetch_medicines_by_prescription_id(prescription_id)

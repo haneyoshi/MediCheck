@@ -54,7 +54,8 @@ def fetch_prescriptions_by_visit_id(visit_id):
 def fetch_disease_by_id(disease_id):
     print(f"\nFetching disease_name by id : {disease_id}")
     query = "SELECT Disease.disease_name FROM Disease WHERE disease_id = %s"
-    return execute_query(query,(disease_id,))
+    result = execute_query(query,(disease_id,))
+    return result[0]["disease_name"] if result else None
 
 # Fetch medicines for a specific prescription
 def fetch_medicines_by_prescription_id(prescription_id):
@@ -123,7 +124,7 @@ def fetch_symptom_ids_by_names(symptom_names):
     # syntax "tuple(symptom_names)" for multiple parameters
 
 def fetch_disease_id_by_name(disease_name):
-    query = "SELECT Disease.dease_id FROM Diease WHERE patient_name = %s"
+    query = "SELECT disease_id FROM Disease WHERE disease_name = %s"
     result = execute_query(query, (disease_name,))
     if not result:
         print(f"No disease found with name: {disease_name}")  # Debugging
@@ -199,6 +200,8 @@ def fetch_most_possible_disease_for_given_symptoms(symptom_names):
     # Filtering for "All Symptoms":
     # 1)Focuses on Relevant Data, 2)Data-Driven Accuracy, 3)Simplicity and Scalability, 4)Practical Relevance
     symptoms = fetch_symptom_ids_by_names(symptom_names)
+    if not symptoms:
+        return [{"disease_name": "No relevant disease found"}]
     placeholders = ', '.join(['%s'] * len(symptoms))
     query = f"""
     SELECT d.disease_name, 
@@ -218,7 +221,7 @@ def fetch_most_possible_disease_for_given_symptoms(symptom_names):
     ORDER BY relevance_score DESC, total_frequency DESC;
     """
      # Combine symptom IDs with the count of symptoms as parameters
-    params = tuple(symptoms) + (len(symptoms),)
+    params = (len(symptoms),) + tuple(symptoms)
     print(f"Executing Query:\n{query}")
     print(f"Params: {params}")
     # Execute query
